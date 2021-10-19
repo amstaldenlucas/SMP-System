@@ -21,6 +21,7 @@ namespace SMPSystem
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://localhost:1020/", "https://localhost:2020/");
                 });
     }
 }
