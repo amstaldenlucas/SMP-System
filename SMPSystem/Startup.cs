@@ -48,7 +48,8 @@ namespace SMPSystem
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.ConfigureUserAndIdentity();
-            services.AddTransient<IEmailSender>(x => new BasicMailSender("smtp.gmail.com", "lucas.amstalden07@gmail.com", "rugbybrasil11"));
+            services.AddTransient<IEmailSender>(x => new BasicMailSender("smtp.gmail.com", "lucas.amstalden07@gmail.com", "FGfgh467$33?" +
+                ""));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
