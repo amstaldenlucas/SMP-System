@@ -12,5 +12,8 @@ namespace SMPSystem.Models
         public bool Deleted { get; set; }
         public DateTime LastConference { get; set; }
         public DateTime NextConference { get; set; }
+
+        public string MeasuringInstrumentTypeId { get; set; }
+        public virtual MeasuringInstrumentType MeasuringInstrumentType { get; set; }
     }
 }
