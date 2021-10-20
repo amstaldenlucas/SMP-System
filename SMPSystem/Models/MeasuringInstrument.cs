@@ -4,7 +4,7 @@ namespace SMPSystem.Models
 {
     public class MeasuringInstrument
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
@@ -14,6 +14,6 @@ namespace SMPSystem.Models
         public DateTime NextConference { get; set; }
 
         public string MeasuringInstrumentTypeId { get; set; }
-        public virtual MeasuringInstrumentType MeasuringInstrumentType { get; set; }
+        public MeasuringInstrumentType MeasuringInstrumentType { get; set; }
     }
 }

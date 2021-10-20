@@ -1,10 +1,6 @@
 ﻿using SMPSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SMPSystem.Models
+namespace SMPSystem.Services
 {
     public static class InitializeDb
     {

@@ -7,7 +7,7 @@ namespace SMPSystem.Models
 {
     public class Product
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
@@ -15,11 +15,11 @@ namespace SMPSystem.Models
         public bool Deleted { get; set; }
 
         public string ProviderId { get; set; }
-        public virtual Provider Provider { get; set; }
+        public Provider Provider { get; set; }
 
         public string ProductGroupId { get; set; }
-        public virtual ProductGroup ProductGroup { get; set; }
+        public ProductGroup ProductGroup { get; set; }
         public string ProductSubGroupId { get; set; }
-        public virtual ProductSubGroup ProductSubGroup { get; set; }
+        public ProductSubGroup ProductSubGroup { get; set; }
     }
 }

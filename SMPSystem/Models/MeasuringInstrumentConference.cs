@@ -7,7 +7,7 @@ namespace SMPSystem.Models
 {
     public class MeasuringInstrumentConference
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public double DefaultValue { get; set; }
         public double RegisteredValue { get; set; }
@@ -16,8 +16,8 @@ namespace SMPSystem.Models
         public bool Adjusted { get; set; }
 
         public string MeasuringInstrumentId { get; set; }
-        public virtual MeasuringInstrument MeasuringInstrument { get; set; }
+        public MeasuringInstrument MeasuringInstrument { get; set; }
         public string DbUserId { get; set; }
-        public virtual DbUser DbUser { get; set; }
+        public DbUser DbUser { get; set; }
     }
 }
