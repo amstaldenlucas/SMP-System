@@ -5,60 +5,74 @@
 }
 
 <h4>Cadastrar Produto</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Code" class="control-label"></label>
-                <input asp-for="Code" class="form-control" />
-                <span asp-validation-for="Code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Created" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="LastUpdate" class="control-label"></label>
-                <input asp-for="LastUpdate" class="form-control" />
-                <span asp-validation-for="LastUpdate" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Deleted" /> @Html.DisplayNameFor(model => model.Deleted)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProviderId" class="control-label"></label>
-                <input asp-for="ProviderId" class="form-control" />
-                <span asp-validation-for="ProviderId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductGroupId" class="control-label"></label>
-                <input asp-for="ProductGroupId" class="form-control" />
-                <span asp-validation-for="ProductGroupId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductSubGroupId" class="control-label"></label>
-                <input asp-for="ProductSubGroupId" class="form-control" />
-                <span asp-validation-for="ProductSubGroupId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container-fluid">
+    <div class="row card">
+        <div class="card-body">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="hidden" asp-for="Created" class="form-control" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Code" class="control-label"></label>
+                            <input asp-for="Code" class="form-control" />
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastUpdate" class="control-label"></label>
+                            <input asp-for="LastUpdate" class="form-control" />
+                            <span asp-validation-for="LastUpdate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ProviderId" class="control-label"></label>
+                            <input asp-for="ProviderId" class="form-control" />
+                            <span asp-validation-for="ProviderId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ProductSubGroupId" class="control-label"></label>
+                            <input asp-for="ProductSubGroupId" class="form-control" />
+                            <span asp-validation-for="ProductSubGroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ProductGroupId" class="control-label"></label>
+                            <input asp-for="ProductGroupId" class="form-control" />
+                            <span asp-validation-for="ProductGroupId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Deleted" /> @Html.DisplayNameFor(model => model.Deleted)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
+    @*<div class="row">
+            <a asp-action="Index">Back to List</a>
+        </div>*@
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
