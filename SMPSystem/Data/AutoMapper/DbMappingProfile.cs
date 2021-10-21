@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using SMPSystem.Areas.Web.ViewModels;
+using SMPSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,8 @@ namespace SMPSystem.Data.AutoMapper
         public DbMappingProfile(AppDbContext dbContext)
         {
             _dbContext = dbContext;
+
+            CreateMap<Product, ProductVm>();
 
             /* Example */
             //CreateMap<Produto, ProdutoVm>()
