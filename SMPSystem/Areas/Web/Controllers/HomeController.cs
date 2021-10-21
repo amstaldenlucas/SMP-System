@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SMPSystem.Controllers
 {
+    [Area("Web")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

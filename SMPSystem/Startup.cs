@@ -10,6 +10,7 @@ using SMPSystem.Data;
 using SMPSystem.Data.AutoMapper;
 using SMPSystem.Services;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace SMPSystem
 {
@@ -71,9 +72,18 @@ namespace SMPSystem
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "area",
+                    pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("/", async httpCtx =>
+                {
+                    await Task.Yield();
+                    httpCtx.Response.Redirect($"/Web");
+                });
             });
 
             InitializeDb.Initialize(dbContext);
