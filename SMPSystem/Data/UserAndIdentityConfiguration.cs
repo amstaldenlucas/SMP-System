@@ -13,7 +13,7 @@ namespace SMPSystem.Data
             {
                 options.Password.RequireNonAlphanumeric = false;
                 options.Lockout.AllowedForNewUsers = true;
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;

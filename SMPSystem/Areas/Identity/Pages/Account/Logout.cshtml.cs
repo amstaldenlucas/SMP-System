@@ -23,8 +23,15 @@ namespace SMPSystem.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Page();
+            }
+
+            await _signInManager.SignOutAsync();
+            return RedirectToPage();
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)

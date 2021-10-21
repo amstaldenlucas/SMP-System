@@ -27,7 +27,7 @@ namespace SMPSystem
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("SQLServerConnection")));
+                    Configuration.GetConnectionString(InitializeDb.GetStringConnection())));
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -40,8 +40,10 @@ namespace SMPSystem
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.ConfigureUserAndIdentity();
-            services.AddTransient<IEmailSender>(x => new BasicMailSender("smtp.gmail.com", "lucas.amstalden07@gmail.com", "FGfgh467$33?" +
+            services.AddTransient<IEmailSender>(x => new BasicMailSender("smtp.gmail.com", "lucas.amstalden07@gmail.com", "rugbybrasil11" +
                 ""));
+
+            services.AddScoped<DBPopulate>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
