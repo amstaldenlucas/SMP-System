@@ -7,28 +7,6 @@
 <h6>Produtos</h6>
 @if (Model.Any())
 {
-    <div>
-        <h3>Product</h3>
-        <hr />
-        <table class="table table-" style="width:100%">
-            <thead>
-                <tr>
-                    <td>Código</td>
-                    <td>Nome</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Code</td>
-                        <td>@item.Name</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -38,45 +16,39 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table id="example" class="table" style="width:90%">
+                            <table id="example" class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="table-header">Author</th>
-                                        <th class="table-header ps-2">Function</th>
-                                        <th class="table-header text-center">Status</th>
-                                        <th class="table-header text-center">Employed</th>
+                                        <th class="table-header text-center">Código</th>
+                                        <th class="table-header text-center ps-2">Nome</th>
+                                        <th class="table-header text-center">Criação</th>
+                                        <th class="table-header text-center">Provider Id</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">John Michael</h6>
-                                                    <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                            <p class="text-xs text-secondary mb-0">Organization</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">Online</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Code</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Name</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Created</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.ProviderId</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                    Edit
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -88,6 +60,7 @@
 }
 <a class="btn bg-gradient-secondary mt-3" asp-action="Create">Cadastrar Produto</a>
 
+
 @section css
 {
     <style>
@@ -95,27 +68,34 @@
             border-radius: 0 !important;
         }
     </style>
-    <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
-    <link type="text/css" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
+    @*<link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
+        <link type="text/css" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />*@
+
+    <link type="text/css" src="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
 
 }
+
 @section scripts
 {
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    @*<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>*@
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({
-                "language": {
-                    "lengthMenu": "Visualizar _MENU_ itens por página",
-                    "zeroRecords": "Nothing found - sorry",
-                    "info": "Showing page _PAGE_ of _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
-                }
-            });
+            $('#example').DataTable();
+
+            //$('#example').DataTable({
+            //    "language": {
+            //        "lengthMenu": "Visualizar _MENU_ itens por página",
+            //        "zeroRecords": "Nothing found - sorry",
+            //        "info": "Showing page _PAGE_ of _PAGES_",
+            //        "infoEmpty": "No records available",
+            //        "infoFiltered": "(filtered from _MAX_ total records)"
+            //    }
+            //});
         });
     </script>
 }

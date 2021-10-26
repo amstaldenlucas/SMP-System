@@ -11,5 +11,7 @@ namespace SMPSystem.Areas.Web.ViewModels
         public string Code { get; set; }
         public string Name { get; set; }
         public bool Deleted { get; set; }
+        public DateTime Created { get; set; }
+        public string ProviderId { get; set; }
     }
 }
