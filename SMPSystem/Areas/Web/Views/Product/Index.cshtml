@@ -10,7 +10,7 @@
     <div>
         <h3>Product</h3>
         <hr />
-        <table id="example" class="table table-" style="width:100%">
+        <table class="table table-" style="width:100%">
             <thead>
                 <tr>
                     <td>Código</td>
@@ -38,13 +38,13 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
+                            <table id="example" class="table" style="width:90%">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Status</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Employed</th>
+                                        <th class="table-header">Author</th>
+                                        <th class="table-header ps-2">Function</th>
+                                        <th class="table-header text-center">Status</th>
+                                        <th class="table-header text-center">Employed</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -87,3 +87,35 @@
     </div>
 }
 <a class="btn bg-gradient-secondary mt-3" asp-action="Create">Cadastrar Produto</a>
+
+@section css
+{
+    <style>
+        .paginate_button {
+            border-radius: 0 !important;
+        }
+    </style>
+    <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
+    <link type="text/css" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
+
+}
+@section scripts
+{
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "language": {
+                    "lengthMenu": "Visualizar _MENU_ itens por página",
+                    "zeroRecords": "Nothing found - sorry",
+                    "info": "Showing page _PAGE_ of _PAGES_",
+                    "infoEmpty": "No records available",
+                    "infoFiltered": "(filtered from _MAX_ total records)"
+                }
+            });
+        });
+    </script>
+}
