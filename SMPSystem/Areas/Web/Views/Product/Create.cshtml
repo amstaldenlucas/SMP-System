@@ -2,8 +2,14 @@
 @{
     ViewData["Title"] = "Cadastrar Produto";
 }
+@section css{
+    <!-- Include base CSS (optional) -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css" />*@
+    <!-- Include Choices CSS -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />*@
+}
 
-<div class="container-fluid row">
+<div class="container-fluid row mh-100">
     <div class="col-12 col-lg-8 m-auto">
         <div class="card mr-0 mb-3">
             <div class="card-header pt-3 pb-0 ps-4">
@@ -44,7 +50,7 @@
                         <div class="form-group row pe-0">
                             <div class="col-xl-6">
                                 <label asp-for="ProductSubGroupId" class="control-label"></label>
-                                <select asp-for="ProductSubGroupId" asp-items="@Model.SubGroups" class="form-select" ></select>
+                                <select asp-for="ProductSubGroupId" asp-items="@Model.SubGroups" class="form-select"></select>
                             </div>
                             <div class="form-group col-xl-6 pe-0">
                                 <div class="form-group form-check">
@@ -55,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer py-0 row m-auto">
+                    <div class="card-footer py-0 row m-auto p-1">
                         <div class="form-group">
                             <input type="submit" value="Cadastrar" class="btn btn-primary" />
                         </div>
@@ -65,15 +71,23 @@
         </div>
     </div>
 </div>
-@section css{
 
-}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
+    <!-- Include Choices JavaScript -->
+    @*<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
     <script>
         $(document).ready(function () {
-            
+            const choices = new Choices('.js-choice', {
+                searchEnabled: true,
+                searchFields: 'label',
+                shouldSort: false,
+                itemSelectText: '',
+                position: 'auto',
+                searchPlaceholderValue: 'Pesquisar...',
+            });
         });
-    </script>
+    </script>*@
 }

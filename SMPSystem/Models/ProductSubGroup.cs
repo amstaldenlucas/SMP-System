@@ -14,7 +14,7 @@ namespace SMPSystem.Models
         public DateTime LastUpdate { get; set; } = DateTime.Now;
         public bool Deleted { get; set; }
 
-        public string ProductGroupId { get; set; }
+        public int ProductGroupId { get; set; }
         public ProductGroup ProductGroup { get; set; }
 
         public ICollection<Product> Products { get; set; }
