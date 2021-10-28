@@ -5720,8 +5720,10 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #cb0c9f;
-    border-color: #cb0c9f;
+    /*background-color: #cb0c9f;
+    border-color: #cb0c9f;*/
+    background-color: #78678c;
+    border-color: #78678c;
 }
 
 .page-item.disabled .page-link {

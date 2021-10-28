@@ -4,7 +4,6 @@
     ViewData["Title"] = "Produtos";
 }
 
-<h6>Produtos</h6>
 @if (Model.Any())
 {
     <div class="container-fluid py-4">
@@ -17,7 +16,7 @@
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             @*<table id="example" class="table align-items-center mb-0">*@
-                            <table id="example" class="table table-striped" style="width:100%">
+                            <table id="example" class="table table-striped items-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th class="table-header text-center">Código</th>
@@ -64,45 +63,19 @@
 
 @section css
 {
-    <style>
-        .paginate_button {
-            border-radius: 0 !important;
-        }
-    </style>
 
     <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
     <link type="text/css" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
-
-
 }
 
 @section scripts
 {
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-
+    <script type="text/javascript" src="~/js/overview/datatable.js"></script>
     <script>
         $(document).ready(function () {
-            //$('#example').DataTable();
-
-            $('#example').DataTable({
-                "language": {
-                    "lengthMenu": "Visualizar _MENU_ itens por página",
-                    "zeroRecords": "Nothing found - sorry",
-                    "info": "Showing page _PAGE_ of _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
-                }
-            });
-
-            $('#example_length').css("display", "none");
-            $('#example_wrapper').css("width", "98%");
-            $('#example_filter').css("text-align", "end");
-            $('input[type=search],form-control').attr('placeholder', 'Buscar...')
-
-            $('#example_info').css("display", "none");
-            
+            CreteTable('example')
         });
     </script>
 }
