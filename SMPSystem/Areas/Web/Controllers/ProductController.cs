@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
 using SMPSystem.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SMPSystem.Areas.Web.Controllers
@@ -35,9 +37,32 @@ namespace SMPSystem.Areas.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var users = await _dbContext.Users.ToListAsync();
+            var provides = await _dbContext.Providers
+                .Where(x => !x.Deleted)
+                .ToArrayAsync();
 
-            return View();
+            var groups = await _dbContext.ProductGroups
+                .Where(x => !x.Deleted)
+                .ToArrayAsync();
+
+            var subGroups = await _dbContext.ProductSubGroups
+                .Where(x => !x.Deleted)
+                .ToArrayAsync();
+
+
+            var providerOption = new List<SelectListItem>() { new SelectListItem("Selecionar Fabricante", "0") };
+            foreach (var item in provides)
+                providerOption.Add(new SelectListItem(item.Name, item.Id.ToString()));
+
+            var groupOption = new List<SelectListItem>() { new SelectListItem("Selecionar Grupo", "0") };
+            foreach (var item in groups)
+                groupOption.Add(new SelectListItem(item.Name, item.Id.ToString()));
+
+            var subGroupOption = new List<SelectListItem>() { new SelectListItem("Selecionar Subgrupo", "0") };
+            foreach (var item in subGroups)
+                subGroupOption.Add(new SelectListItem(item.Name, item.Id.ToString()));
+
+            return View(new ProductVm(providerOption, groupOption, subGroupOption));
         }
 
         [HttpPost]

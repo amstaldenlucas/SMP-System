@@ -16,7 +16,8 @@ namespace SMPSystem.Data.AutoMapper
         {
             _dbContext = dbContext;
 
-            CreateMap<Product, ProductVm>();
+            CreateMap<Product, ProductVm>()
+                .ReverseMap();
 
             /* Example */
             //CreateMap<Produto, ProdutoVm>()

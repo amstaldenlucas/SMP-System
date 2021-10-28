@@ -1,17 +1,44 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMPSystem.Areas.Web.ViewModels
 {
     public class ProductVm
     {
+        public ProductVm()
+        {
+        }
+
+        public ProductVm(List<SelectListItem> providers, List<SelectListItem> groups, List<SelectListItem> subgroups)
+        {
+            Providers = providers;
+            Groups = groups;
+            SubGroups = subgroups;
+        }
+
         public int Id { get; set; }
+
+        [Display(Name = "Código")]
         public string Code { get; set; }
+        [Display(Name = "Nome")]
         public string Name { get; set; }
+        [Display(Name = "Deletado")]
         public bool Deleted { get; set; }
+        [Display(Name = "Criação")]
         public DateTime Created { get; set; }
+
         public string ProviderId { get; set; }
+        [Display(Name = "Fornecedor")]
+        public List<SelectListItem> Providers { get; set; } = new List<SelectListItem>();
+
+        [Display(Name = "Grupo")]
+        public string ProductGroupId { get; set; }
+        public List<SelectListItem> Groups { get; set; } = new List<SelectListItem>();
+
+        [Display(Name = "Subgrupo")]
+        public string ProductSubGroupId { get; set; }
+        public List<SelectListItem> SubGroups { get; set; } = new List<SelectListItem>();
     }
 }
