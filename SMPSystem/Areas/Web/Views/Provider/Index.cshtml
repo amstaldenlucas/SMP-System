@@ -1,7 +1,7 @@
-﻿@model ICollection<ProductVm>
+﻿@model ICollection<Provider>
 
 @{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Fabricantes";
 }
 
 @if (Model.Any())
@@ -11,18 +11,16 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Produtos</h6>
+                        <h6>Fornecedores</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            @*<table id="example" class="table align-items-center mb-0">*@
                             <table id="example" class="table table-striped items-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th class="table-header text-center">Código</th>
-                                        <th class="table-header text-center ps-2">Nome</th>
-                                        <th class="table-header text-center">Criação</th>
-                                        <th class="table-header text-center">Fabricante</th>
+                                        <th class="table-header text-center ps-2">CNPJ</th>
+                                        <th class="table-header text-center">Nome</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -34,13 +32,10 @@
                                                 <span class="text-secondary text-xs font-weight-bold">@item.Code</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Name</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Document</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Created.ToShortDateString()</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Provider.TradingName</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.TradingName</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
@@ -58,11 +53,11 @@
         </div>
     </div>
 }
-<a class="btn btn-primary mt-3" asp-action="Create">Cadastrar Produto</a>
+<a class="btn btn-primary mt-3" asp-action="Create">Cadastrar Fornecedor</a>
+
 
 @section css
 {
-
     <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
     <link type="text/css" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
 }

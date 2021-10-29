@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +28,11 @@ namespace SMPSystem.Areas.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var products = await _dbContext.Products.ToArrayAsync();
-            var vm = _mapper.Map<List<ProductVm>>(products);
+            var products = await _dbContext.Products
+                .Where(x => !x.Deleted)
+                .ToArrayAsync();
 
+            var vm = _mapper.Map<List<ProductVm>>(products);
             return View(vm);
         }
 

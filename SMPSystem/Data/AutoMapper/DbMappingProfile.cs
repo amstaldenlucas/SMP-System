@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Models;
 using System;
@@ -17,17 +18,15 @@ namespace SMPSystem.Data.AutoMapper
             _dbContext = dbContext;
 
             CreateMap<Product, ProductVm>()
+                .ForMember(x => x.Provider,
+                    cfg => cfg.MapFrom((md) => GetProviderById(md.ProviderId)))
                 .ReverseMap();
 
-            /* Example */
-            //CreateMap<Produto, ProdutoVm>()
-            //    .ForMember(x => x.NomeFabricante,
-            //        cfg => cfg.MapFrom((md) => GetNomeFabricantePorId(md.FabricanteId)));
+            CreateMap<ProductSubGroup, SubgroupVm>()
+                .ReverseMap();
         }
 
-
-        /* Example */
-        //private object GetNomeFabricantePorId(string fabricanteId)
-        //    => _dbContext.Fabricantes.Find(fabricanteId)?.RazaoSocial;
+        private Provider GetProviderById(int providerId)
+            => _dbContext.Providers.Find(providerId);
     }
 }

@@ -44,6 +44,13 @@ namespace SMPSystem
             services.AddTransient<IEmailSender>(x => new BasicMailSender("smtp.gmail.com", "lucas.amstalden07@gmail.com", "rugbybrasil11" +
                 ""));
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
             services.AddScoped<DBPopulate>();
         }
 

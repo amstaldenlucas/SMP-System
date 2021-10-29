@@ -15,6 +15,5 @@ namespace SMPSystem.Models
         public bool Deleted { get; set; }
 
         public ICollection<ProductSubGroup> ProductSubGroups { get; set; }
-        public ICollection<Product> Products { get; set; }
     }
 }

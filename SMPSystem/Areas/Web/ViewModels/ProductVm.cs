@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using SMPSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,8 +30,11 @@ namespace SMPSystem.Areas.Web.ViewModels
         [Display(Name = "Criação")]
         public DateTime Created { get; set; }
 
-        public string ProviderId { get; set; }
         [Display(Name = "Fornecedor")]
+        public Provider Provider { get; set; }
+
+        public string ProviderId { get; set; }
+        [Display(Name = "Fornecedores")]
         public List<SelectListItem> Providers { get; set; } = new List<SelectListItem>();
 
         [Display(Name = "Grupo")]

@@ -1,0 +1,81 @@
+﻿@model Provider
+@{
+    ViewData["Title"] = "Cadastrar Fabricante";
+}
+
+<div class="container-fluid row mh-100">
+    <div class="col-12 col-lg-8 m-auto">
+        <div class="card mr-0 mb-3">
+            <div class="card-header pt-3 pb-0 ps-4">
+                <h5 class="ps-2">Cadastrar Fornecedor</h5>
+            </div>
+            <div class="card-body mr-0 mb-3 pt-0">
+                <form method="post">
+                    <div class="card-body row m-auto p-0 justify-content-between">
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <input type="hidden" asp-for="Created" class="form-control" />
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <label asp-for="Code" class="control-label"></label>
+                                <input asp-for="Code" class="form-control" />
+                                <span asp-validation-for="Code" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="Document" class="control-label"></label>
+                                <input asp-for="Document" class="form-control" />
+                                <span asp-validation-for="Document" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="TradingName" class="control-label"></label>
+                                <input asp-for="TradingName" class="form-control" />
+                                <span asp-validation-for="TradingName" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-0 row m-auto p-1">
+                        <div class="form-group">
+                            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+    <!-- Include base CSS (optional) -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css" />*@
+    <!-- Include Choices CSS -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />*@
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <!-- Include Choices JavaScript -->
+    @*<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                const choices = new Choices('.js-choice', {
+                    searchEnabled: true,
+                    searchFields: 'label',
+                    shouldSort: false,
+                    itemSelectText: '',
+                    position: 'auto',
+                    searchPlaceholderValue: 'Pesquisar...',
+                });
+            });
+        </script>*@
+}

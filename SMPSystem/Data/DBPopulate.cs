@@ -16,12 +16,13 @@ namespace SMPSystem.Data
             _dbContext = dbContext;
         }
 
-        public async Task VerifyAndPopulateDb()
+        public Task VerifyAndPopulateDb()
         {
-            if (_dbContext.DbUsers.Any()) return;
+            return Task.CompletedTask;
+            //if (_dbContext.DbUsers.Any());
 
-            await CreateProviders();
-            await CreateProducs();
+            //await CreateProviders();
+            //await CreateProducs();
         }
 
         private async Task CreateProviders()
@@ -39,10 +40,10 @@ namespace SMPSystem.Data
             var providers = await _dbContext.Providers.ToArrayAsync();
             _dbContext.AddRange(new List<Product>()
             {
-                new Product() { Code = "12345", Name = "Produto 1", ProviderId = providers.FirstOrDefault(x => x.TradingName == "Fornecedor 1").Id.ToString()},
-                new Product() { Code = "67890", Name = "Produto 2", ProviderId = providers.FirstOrDefault(x => x.TradingName == "Fornecedor 2").Id.ToString()},
+                new Product() { Code = "12345", Name = "Produto 1", ProviderId = providers.FirstOrDefault(x => x.TradingName == "Fornecedor 1").Id},
+                new Product() { Code = "67890", Name = "Produto 2", ProviderId = providers.FirstOrDefault(x => x.TradingName == "Fornecedor 2").Id},
             });
-            _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

@@ -1,0 +1,48 @@
+﻿@model SubgroupVm
+@{
+    ViewData["Title"] = "Cadastrar Subgrupo";
+}
+<div class="container-fluid row mh-100">
+    <div class="col-12 col-lg-8 m-auto">
+        <div class="card mr-0 mb-3">
+            <div class="card-header pt-3 pb-0 ps-4">
+                <h5 class="ps-2">Cadastrar Fabricante</h5>
+            </div>
+            <div class="card-body mr-0 mb-3 pt-0">
+                <form method="post">
+                    <div class="card-body row m-auto p-0 justify-content-between">
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <label asp-for="Code" class="control-label"></label>
+                                <input asp-for="Code" class="form-control" />
+                                <span asp-validation-for="Code" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <label asp-for="ProductGroupId" class="control-label"></label>
+                                <select asp-for="ProductGroupId" asp-items="@Model.Groups" class="form-select"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-0 row m-auto p-1">
+                        <div class="form-group">
+                            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+}
+@section Scripts {
+}

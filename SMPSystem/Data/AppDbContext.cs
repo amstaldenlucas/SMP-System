@@ -20,8 +20,8 @@ namespace SMPSystem.Data
         public DbSet<MeasuringInstrumentConference> MeasuringInstrumentConferences { get; set; }
 
         public DbSet<Provider> Providers { get; set; }
-        public DbSet<Product> Products { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductSubGroup> ProductSubGroups { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

@@ -16,7 +16,5 @@ namespace SMPSystem.Models
 
         public int ProductGroupId { get; set; }
         public ProductGroup ProductGroup { get; set; }
-
-        public ICollection<Product> Products { get; set; }
     }
 }

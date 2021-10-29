@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using SMPSystem.Data;
-using SMPSystem.Models;
+﻿using SMPSystem.Data;
 using System;
 using System.Threading.Tasks;
 
