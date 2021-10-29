@@ -7,7 +7,7 @@
                 </div>
                 <span class="nav-link-text ms-1">Cadastros</span>
             </a>
-            <div class="collapse  show " id="dashboardsExamples">
+            <div class="collapse " id="dashboardsExamples">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item">
                         <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
@@ -29,32 +29,36 @@
                             <span class="sidenav-normal">Produtos</span>
                         </a>
                     </li>
+                </ul>
+            </div>
 
-
-
-                    <li class="nav-item ">
-                        <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#vrExamples">
-                            <span class="sidenav-normal">Virtual Reality<b class="caret"></b></span>
+            <a data-bs-toggle="collapse" href="#measuresArea" class="nav-link" aria-controls="measuresArea" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
+                    <i class="fas fa-home" style="color: #454B77;"></i>
+                </div>
+                <span class="nav-link-text ms-1">Medidas</span>
+            </a>
+            <div class="collapse" id="measuresArea">
+                <ul class="nav ms-4 ps-3">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
+                            <span class="sidenav-normal">Operações por produto</span>
                         </a>
-                        <div class="collapse " id="vrExamples">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link " asp-action="Home">
-                                        <span class="sidenav-normal">Default</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " asp-action="Home">
-                                        <span class="sidenav-normal">VR Info</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
+                            <span class="sidenav-normal">Instrumentos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Web" asp-controller="Subgroup" asp-action="Index">
+                            <span class="sidenav-normal">Cotas de Produtos</span>
+                        </a>
                     </li>
                 </ul>
             </div>
 
-            <a data-bs-toggle="collapse" href="#reportsArea" class="nav-link" aria-controls="reportsArea" role="button" aria-expanded="false">
+            <a data-bs-toggle="collapse" href="#reportsArea" class="nav-link" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
                     <i class="fas fa-home" style="color: #454B77;"></i>
                 </div>
@@ -62,96 +66,6 @@
             </a>
             <div class="collapse" id="reportsArea">
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Home">
-                            <span class="sidenav-normal">Relatório 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" asp-action="Index">
-                            <span class="sidenav-normal">Relatório 2</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-action="Home">
                             <span class="sidenav-normal">Relatório 1</span>
