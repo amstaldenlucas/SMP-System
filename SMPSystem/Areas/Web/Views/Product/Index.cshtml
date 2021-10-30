@@ -40,7 +40,8 @@
                                                 <span class="text-secondary text-xs font-weight-bold">@item.Created.ToShortDateString()</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Provider.TradingName</span>
+                                                @*<span class="text-secondary text-xs font-weight-bold">@item.Provider.TradingName.NullTo("-")</span>*@
+                                                <span class="text-secondary text-xs font-weight-bold">-</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

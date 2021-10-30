@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMPSystem.Models
 {
@@ -15,7 +12,9 @@ namespace SMPSystem.Models
 
         public string DimentionType { get; set; }
         public string MeasuringToolType { get; set; }
+        [Column(TypeName = "decimal(12,4)")]
         public decimal MinimalValue { get; set; }
+        [Column(TypeName = "decimal(12,4)")]
         public decimal MaximaumValue { get; set; }
         public string Obs { get; set; }
 

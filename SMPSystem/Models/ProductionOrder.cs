@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SMPSystem.Models
 {
@@ -16,9 +12,14 @@ namespace SMPSystem.Models
         public int TotalQuantity { get; set; }
         public int ProducedQuantity { get; set; }
         public int LostQuantity { get; set; }
+        public string Obs { get; set; }
+        public bool Status { get; set; }
 
         public int DbUserId { get; set; }
         public DbUser DbUser { get; set; }
+
+        public int ProductionStepId { get; set; }
+        public ProductionStep ProductionStep { get; set; }
 
 
 
