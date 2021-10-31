@@ -5,6 +5,7 @@ using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
 using SMPSystem.Models;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +40,7 @@ namespace SMPSystem.Areas.Web.Handlers
         public async Task Create(ProductionOrderVm vm)
         {
             var productionOrder = _mapper.Map<ProductionOrder>(vm);
+
             var result = await _dbContext.AddAsync(productionOrder);
             await _dbContext.SaveChangesAsync();
 
@@ -57,7 +59,7 @@ namespace SMPSystem.Areas.Web.Handlers
 
             List<OrderProductStep> orderProductStepItems = new List<OrderProductStep>();
             foreach (var item in productProductionSteps)
-                orderProductStepItems.Add(new OrderProductStep(orderId, item.ProductId, item.ExecutionOrder));
+                orderProductStepItems.Add(new OrderProductStep(orderId, item.ProductId, item.ExecutionOrder, item.Id));
 
             await _dbContext.AddRangeAsync(orderProductStepItems);
             await _dbContext.SaveChangesAsync();

@@ -32,7 +32,7 @@ namespace SMPSystem.Areas.Web.Controllers
         public async Task<IActionResult> Create()
         {
             var vm = await _productionOrderHandler.PrepareVm(new ProductionOrderVm());
-            return RedirectToAction(nameof(Index));
+            return View(vm);
         }
 
         [HttpPost]

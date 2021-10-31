@@ -19,6 +19,6 @@ namespace SMPSystem.Models
         public string DbUserId { get; set; }
         public DbUser DbUser { get; set; }
 
-        public List<OrderProductStep> OrderProductSteps { get; set; }
+        public List<OrderProductStep> OrderProductSteps { get; set; } = new List<OrderProductStep>();
     }
 }

@@ -32,13 +32,13 @@
                 </ul>
             </div>
 
-            <a data-bs-toggle="collapse" href="#productionMenu" class="nav-link" aria-controls="productionMenu" role="button" aria-expanded="false">
+            <a data-bs-toggle="collapse" href="#productionAdminMenu" class="nav-link" aria-controls="productionAdminMenu" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
                     <i class="fas fa-home" style="color: #454B77;"></i>
                 </div>
                 <span class="nav-link-text ms-1">Cadastros Produção</span>
             </a>
-            <div class="collapse" id="productionMenu">
+            <div class="collapse" id="productionAdminMenu">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item">
                         <a class="nav-link" asp-area="Web" asp-controller="ProductionStep" asp-action="Index">
@@ -76,11 +76,22 @@
                             <span class="sidenav-normal">Instrumentos</span>
                         </a>
                     </li>
-                    @*<li class="nav-item">
-                            <a class="nav-link" asp-area="Web" asp-controller="Subgroup" asp-action="Index">
-                                <span class="sidenav-normal">Cotas de Produtos</span>
-                            </a>
-                        </li>*@
+                </ul>
+            </div>
+
+            <a data-bs-toggle="collapse" href="#productionMenu" class="nav-link" aria-controls="productionMenu" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
+                    <i class="fas fa-home" style="color: #454B77;"></i>
+                </div>
+                <span class="nav-link-text ms-1">Produção (Operar)</span>
+            </a>
+            <div class="collapse" id="productionMenu">
+                <ul class="nav ms-4 ps-3">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Web" asp-controller="OrderOperatorUser" asp-action="StartProduction">
+                            <span class="sidenav-normal">Iniciar Produção</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 

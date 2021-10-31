@@ -11,11 +11,12 @@ namespace SMPSystem.Models
         public OrderProductStep()
         {
         }
-        public OrderProductStep(int orderId, int productId, int executionOrder)
+        public OrderProductStep(int orderId, int productId, int executionOrder, int productProductionStepId)
         {
             OrderId = orderId;
             ProductId = productId;
             ExecutionOrder = executionOrder;
+            ProductProductionStepId = productProductionStepId;
         }
 
         // operaçõe da ordem.. Assim que cria o pedido já deve popular os registros.

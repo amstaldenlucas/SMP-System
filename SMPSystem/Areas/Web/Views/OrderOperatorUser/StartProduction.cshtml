@@ -1,0 +1,39 @@
+﻿@model OrderWithDbUserVm
+@{
+    ViewData["Title"] = "Iniciar ordem de produção";
+}
+<div class="container-fluid row mh-100">
+    <div class="col-12 col-lg-8 m-auto">
+        <div class="card mr-0 mb-3">
+            <div class="card-header pt-3 pb-0 ps-4">
+                <h5 class="ps-2">Iniciar ordem de produção</h5>
+            </div>
+            <div class="card-body mr-0 mb-0 pb-2 pt-0">
+                <form method="post" asp-action="SearchProduction">
+                    <div class="card-body row m-auto p-0 justify-content-between">
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <label asp-for="DbUserId" class="control-label"></label>
+                                <select asp-for="DbUserId" asp-items="@Model.DbUserOptions" class="form-select"></select>
+                                <span asp-validation-for="DbUserId" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="ProductionOrderCode" class="control-label"></label>
+                                <input asp-for="ProductionOrderCode" class="form-control" />
+                                <span asp-validation-for="ProductionOrderCode" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-0 row m-auto p-1">
+                        <div class="form-group mb-0 mt-3">
+                            <input type="submit" value="Buscar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
