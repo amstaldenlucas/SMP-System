@@ -44,14 +44,6 @@ namespace SMPSystem.Areas.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var list = Enum.GetValues(typeof(MeasuringToolTypeOption));
-            var measuringOption = new List<SelectListItem>();
-            foreach (var item in list)
-            {
-                var text = MeasuringToolType.TypeNameDescription(item.ToString());
-                measuringOption.Add(new SelectListItem(text, item.ToString()));
-            }
-
             var vm = await _productHandler.PrepareVm(new ProductVm());
             return View(vm);
         }
@@ -67,7 +59,10 @@ namespace SMPSystem.Areas.Web.Controllers
                     ModelState.AddModelError(error.Key, error.Message);
             }
             if (!ModelState.IsValid)
+            {
+                await _productHandler.PrepareVm(vm);
                 return View(vm);
+            }
 
             await _productHandler.Create(vm);
             return RedirectToAction(nameof(Index));

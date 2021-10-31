@@ -5,10 +5,8 @@ using SMPSystem.Areas.Web.Handlers.HandleResults;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
 using SMPSystem.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SMPSystem.Areas.Web.Handlers
@@ -60,11 +58,11 @@ namespace SMPSystem.Areas.Web.Handlers
         {
             var result = new PrepareResult();
 
-            if (!string.IsNullOrWhiteSpace(vm.Code))
+            if (string.IsNullOrWhiteSpace(vm.Code))
                 result.AddError(nameof(vm.Code),
                     "Informar código do produto");
 
-            if (!string.IsNullOrWhiteSpace(vm.Name))
+            if (string.IsNullOrWhiteSpace(vm.Name))
                 result.AddError(nameof(vm.Name),
                     "Informar nome do produto");
 
@@ -81,7 +79,8 @@ namespace SMPSystem.Areas.Web.Handlers
         public async Task Delete(int productId)
         {
             var product = await _dbContext.Products.FindAsync(productId);
-            _dbContext.Remove(product);
+            product.Deleted = true;
+            await _dbContext.AddAsync(product);
             await _dbContext.SaveChangesAsync();
         }
     }
