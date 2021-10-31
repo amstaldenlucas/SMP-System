@@ -16,6 +16,8 @@ namespace SMPSystem.Models
         public decimal MinimalValue { get; set; }
         [Column(TypeName = "decimal(12,4)")]
         public decimal MaximaumValue { get; set; }
+        public int FrequencyToMeasureInQuantity { get; set; }
+        public int FrequencyToMeasureInMinutes { get; set; }
         public string Obs { get; set; }
 
         public int ProductId { get; set; }

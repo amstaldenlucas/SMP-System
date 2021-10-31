@@ -40,6 +40,19 @@
 
                         <div class="form-group row pe-0">
                             <div class="col-xl-6">
+                                <label asp-for="FrequencyToMeasureInQuantity" class="control-label"></label>
+                                <input asp-for="FrequencyToMeasureInQuantity" class="form-control" />
+                                <span asp-validation-for="FrequencyToMeasureInQuantity" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="FrequencyToMeasureInMinutes" class="control-label"></label>
+                                <input asp-for="FrequencyToMeasureInMinutes" class="form-control" />
+                                <span asp-validation-for="FrequencyToMeasureInMinutes" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
                                 <label asp-for="MinimalValue" class="control-label"></label>
                                 <input asp-for="MinimalValue" class="form-control" />
                                 <span asp-validation-for="MinimalValue" class="text-danger"></span>
