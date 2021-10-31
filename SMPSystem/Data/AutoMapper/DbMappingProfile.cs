@@ -24,6 +24,15 @@ namespace SMPSystem.Data.AutoMapper
 
             CreateMap<ProductSubGroup, SubgroupVm>()
                 .ReverseMap();
+
+            CreateMap<ProductProductionSteps, ProductProductionStepsVm>()
+                .ReverseMap();
+
+            CreateMap<ProductStepDimension, ProductStepDimensionVm>()
+                .ReverseMap();
+
+            CreateMap<MeasuringTool, MeasuringToolVm>()
+                .ReverseMap();
         }
 
         private Provider GetProviderById(int providerId)

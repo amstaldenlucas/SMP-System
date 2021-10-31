@@ -1,6 +1,6 @@
-﻿@model ICollection<ProductVm>
+﻿@model ICollection<ProductStepDimension>
 @{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Cota de Produtos";
 }
 
 @if (Model.Any())
@@ -10,17 +10,20 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Produtos</h6>
+                        <h6>Cota de Produtos</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table id="example" class="table table-striped items-hover w-100">
                                 <thead>
                                     <tr>
-                                        <th class="table-header text-center">Código</th>
-                                        <th class="table-header text-center ps-2">Nome</th>
-                                        <th class="table-header text-center">Criação</th>
-                                        <th class="table-header text-center">Fabricante</th>
+                                        <th class="table-header text-center">Cód. Produto</th>
+                                        <th class="table-header text-center ps-2">Produto</th>
+                                        <th class="table-header text-center">Operação</th>
+                                        <th class="table-header text-center">Tipo Dimensão</th>
+                                        <th class="table-header text-center">Tipo Instrumento</th>
+                                        <th class="table-header text-center">Valor mín.</th>
+                                        <th class="table-header text-center">Valor Máx.</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -29,17 +32,29 @@
                                     {
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Code</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Product.Code</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Name</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Product.Name</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Created.ToShortDateString()</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.ProductionStep.Description</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                @*<span class="text-secondary text-xs font-weight-bold">@item.Provider.TradingName.NullTo("-")</span>*@
-                                                <span class="text-secondary text-xs font-weight-bold">-</span>
+                                                <span class="text-secondary text-xs font-weight-bold">
+                                                    @MeasuringDimensionType.TypeNameDescription(item.MeasuringDimensionType)
+                                                </span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">
+                                                    @MeasuringToolType.TypeNameDescription(item.MeasuringToolType)
+                                                </span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.MinimalValue</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.MaximaumValue</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

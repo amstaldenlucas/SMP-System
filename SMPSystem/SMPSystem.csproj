@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Areas\Web\Models\MeasuringDimensionTypeOption.cs" />
     <Compile Include="Areas\Web\Models\MeasuringToolTypeOption.cs" />
   </ItemGroup>
 

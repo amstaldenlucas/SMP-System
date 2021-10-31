@@ -29,6 +29,11 @@ namespace SMPSystem.Areas.Web.Controllers
             return View(productStepHandlers);
         }
 
+        public IActionResult Create()
+        {
+            return View(new ProductionStep());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(ProductionStep productionStep)
         {

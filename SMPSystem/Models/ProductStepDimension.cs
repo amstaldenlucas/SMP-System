@@ -10,7 +10,7 @@ namespace SMPSystem.Models
         public DateTime LastUpDate { get; set; } = DateTime.Now;
         public bool Deleted { get; set; }
 
-        public string DimentionType { get; set; }
+        public string MeasuringDimensionType { get; set; }
         public string MeasuringToolType { get; set; }
         [Column(TypeName = "decimal(12,4)")]
         public decimal MinimalValue { get; set; }

@@ -5,7 +5,7 @@
 
 @if (Model.Any())
 {
-    <div class="container-fluid py-4">
+    <div class="container-fluid pt-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table id="example" class="table table-striped items-hover" style="width:100%">
+                            <table id="example" class="table table-striped items-hover w-100">
                                 <thead>
                                     <tr>
                                         <th class="table-header text-center">Código</th>
@@ -52,7 +52,9 @@
         </div>
     </div>
 }
-<a class="btn btn-primary mt-3" asp-action="Create">Cadastrar Grupo</a>
+<div class="container-fluid">
+    <a class="btn btn-primary" asp-action="Create">Cadastrar</a>
+</div>
 
 @section css
 {

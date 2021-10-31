@@ -38,7 +38,7 @@ namespace SMPSystem.Areas.Web.Handlers
 
             var productionStepOptions = new List<SelectListItem>() { new SelectListItem("Selecionar Operação", "0") };
             foreach (var item in productionSteps)
-                productionStepOptions.Add(new SelectListItem(item.Name, item.Id.ToString()));
+                productionStepOptions.Add(new SelectListItem(item.Description, item.Id.ToString()));
 
             vm.ProductOptions = productOptions;
             vm.ProductionStepOptions = productionStepOptions;

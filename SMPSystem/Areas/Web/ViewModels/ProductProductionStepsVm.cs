@@ -17,9 +17,9 @@ namespace SMPSystem.Areas.Web.ViewModels
         public int MaximumProductionTimeInSeconds { get; set; }
 
         public int ProductId { get; set; }
-        public List<SelectListItem> ProductOptions { get; set; }
+        public List<SelectListItem> ProductOptions { get; set; } = new List<SelectListItem>();
         public int ProductionStepId { get; set; }
 
-        public List<SelectListItem> ProductionStepOptions { get; set; }
+        public List<SelectListItem> ProductionStepOptions { get; set; } = new List<SelectListItem>();
     }
 }

@@ -41,20 +41,25 @@
             <div class="collapse" id="productionMenu">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
+                        <a class="nav-link" asp-area="Web" asp-controller="ProductionStep" asp-action="Index">
                             <span class="sidenav-normal">Operação</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Web" asp-controller="Subgroup" asp-action="Index">
-                            <span class="sidenav-normal">Cotas de Produto</span>
+                        <a class="nav-link" asp-area="Web" asp-controller="ProductProductionSteps" asp-action="Index">
+                            <span class="sidenav-normal">Operações por produto</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
-                            <span class="sidenav-normal">Ordem de produção</span>
-                        </a>
-                    </li>
+                            <a class="nav-link" asp-area="Web" asp-controller="ProductStepDimension" asp-action="Index">
+                                <span class="sidenav-normal">Cotas de Produto</span>
+                            </a>
+                        </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
+                                <span class="sidenav-normal">Ordem de produção</span>
+                            </a>
+                        </li>*@
 
                 </ul>
             </div>
@@ -68,20 +73,15 @@
             <div class="collapse" id="measuringMenu">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
-                            <span class="sidenav-normal">Operações por produto</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Web" asp-controller="Provider" asp-action="Index">
+                        <a class="nav-link" asp-area="Web" asp-controller="MeasuringTool" asp-action="Index">
                             <span class="sidenav-normal">Instrumentos</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Web" asp-controller="Subgroup" asp-action="Index">
-                            <span class="sidenav-normal">Cotas de Produtos</span>
-                        </a>
-                    </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link" asp-area="Web" asp-controller="Subgroup" asp-action="Index">
+                                <span class="sidenav-normal">Cotas de Produtos</span>
+                            </a>
+                        </li>*@
                 </ul>
             </div>
 

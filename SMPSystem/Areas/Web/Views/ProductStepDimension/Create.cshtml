@@ -1,0 +1,72 @@
+﻿@model ProductStepDimensionVm
+@{
+    ViewData["Title"] = "Cadastrar Cota de Produto";
+}
+
+<div class="container-fluid row mh-100">
+    <div class="col-12 col-lg-8 m-auto">
+        <div class="card mr-0 mb-3">
+            <div class="card-header pt-3 pb-0 ps-4">
+                <h5 class="ps-2">Cadastrar Cota de Produto</h5>
+            </div>
+            <div class="card-body mr-0 mb-0 pb-2 pt-0">
+                <form method="post">
+                    <div class="card-body row m-auto p-0 justify-content-between">
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <label asp-for="ProductId" class="control-label"></label>
+                                <select asp-for="ProductId" asp-items="@Model.ProductOptions" class="form-select"></select>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="ProductionStepId" class="control-label"></label>
+                                <select asp-for="ProductionStepId" asp-items="@Model.ProductionStepOptions" class="form-select"></select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <label asp-for="MeasuringDimensionType" class="control-label"></label>
+                                <select asp-for="MeasuringDimensionType" asp-items="@Model.DimensionTypeOptions" class="form-select"></select>
+                            </div>
+                            <div class="col-xl-6">
+                                <label asp-for="MeasuringToolType" class="control-label"></label>
+                                <select asp-for="MeasuringToolType" asp-items="@Model.MeasuringToolTypeOptions" class="form-select"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row pe-0">
+                            <div class="col-xl-6">
+                                <label asp-for="MinimalValue" class="control-label"></label>
+                                <input asp-for="MinimalValue" class="form-control" />
+                                <span asp-validation-for="MinimalValue" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-6 pe-0">
+                                <label asp-for="MaximaumValue" class="control-label"></label>
+                                <input asp-for="MaximaumValue" class="form-control" />
+                                <span asp-validation-for="MaximaumValue" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row pe-0">
+                            <div class="form-group col-xl-6 pe-0">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="Deleted" /> @Html.DisplayNameFor(model => model.Deleted)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-0 row m-auto p-1">
+                        <div class="form-group mb-0 mt-3">
+                            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

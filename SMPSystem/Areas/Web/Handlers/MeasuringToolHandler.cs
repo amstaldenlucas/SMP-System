@@ -25,7 +25,7 @@ namespace SMPSystem.Areas.Web.Handlers
         public MeasuringToolVm PrepareVm(MeasuringToolVm vm)
         {
             var list = Enum.GetValues(typeof(MeasuringToolTypeOption));
-            var measuringOption = new List<SelectListItem>();
+            var measuringOption = new List<SelectListItem>() { new SelectListItem("Selectionar Tipo", "0") };
             foreach (var item in list)
             {
                 var text = MeasuringToolType.TypeNameDescription(item.ToString());

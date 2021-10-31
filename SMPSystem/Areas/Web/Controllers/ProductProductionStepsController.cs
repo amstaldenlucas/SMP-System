@@ -22,9 +22,11 @@ namespace SMPSystem.Areas.Web.Controllers
             _productProductionStepsHandler = productProductionStepsHandler;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var itens = _dbContext.ProductProductionSteps
+            var itens = await _dbContext.ProductProductionSteps
+                .Include(x => x.Product)
+                .Include(x => x.ProductionStep)
                 .Where(x => !x.Deleted)
                 .ToArrayAsync();
 

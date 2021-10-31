@@ -15,7 +15,7 @@ namespace SMPSystem.Areas.Web.ViewModels
         public DateTime LastUpDate { get; set; } = DateTime.Now;
         public bool Deleted { get; set; }
 
-        public string DimentionType { get; set; }
+        public string MeasuringDimensionType { get; set; }
         public string MeasuringToolType { get; set; }
 
         [Column(TypeName = "decimal(12,4)")]
@@ -25,10 +25,13 @@ namespace SMPSystem.Areas.Web.ViewModels
         public decimal MaximaumValue { get; set; }
         public string Obs { get; set; }
 
-        public Product Product { get; set; }
+        public int ProductId { get; set; }
+        public List<SelectListItem> ProductOptions { get; set; }
 
-        public ProductionStep ProductionStep { get; set; }
+        public int ProductionStepId { get; set; }
+        public List<SelectListItem> ProductionStepOptions { get; set; }
 
+        public List<SelectListItem> DimensionTypeOptions { get; set; }
         public List<SelectListItem> MeasuringToolTypeOptions { get; set; }
     }
 }

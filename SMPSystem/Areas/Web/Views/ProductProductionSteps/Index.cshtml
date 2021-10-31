@@ -1,8 +1,7 @@
-﻿@model ICollection<ProductVm>
+﻿@model ICollection<ProductProductionSteps>
 @{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Produtos - Etapas";
 }
-
 @if (Model.Any())
 {
     <div class="container-fluid pt-4">
@@ -17,10 +16,10 @@
                             <table id="example" class="table table-striped items-hover w-100">
                                 <thead>
                                     <tr>
-                                        <th class="table-header text-center">Código</th>
-                                        <th class="table-header text-center ps-2">Nome</th>
-                                        <th class="table-header text-center">Criação</th>
-                                        <th class="table-header text-center">Fabricante</th>
+                                        <th class="table-header text-center">Código produto</th>
+                                        <th class="table-header text-center ps-2">Produto</th>
+                                        <th class="table-header text-center">Operação</th>
+                                        <th class="table-header text-center">Ordem execução</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -29,17 +28,16 @@
                                     {
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Code</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Product.Code</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Name</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Product.Name</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Created.ToShortDateString()</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.ProductionStep.Description</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                @*<span class="text-secondary text-xs font-weight-bold">@item.Provider.TradingName.NullTo("-")</span>*@
-                                                <span class="text-secondary text-xs font-weight-bold">-</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.ExecutionOrder.ToString("00")</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

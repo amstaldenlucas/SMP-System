@@ -1,6 +1,6 @@
-﻿@model ICollection<ProductVm>
+﻿@model ICollection<MeasuringTool>
 @{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Instrumentos de medição";
 }
 
 @if (Model.Any())
@@ -10,17 +10,17 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Produtos</h6>
+                        <h6>Instrumentos</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table id="example" class="table table-striped items-hover w-100">
+                            <table id="example" class="table table-striped items-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th class="table-header text-center">Código</th>
                                         <th class="table-header text-center ps-2">Nome</th>
-                                        <th class="table-header text-center">Criação</th>
-                                        <th class="table-header text-center">Fabricante</th>
+                                        <th class="table-header text-center">Última atualização</th>
+                                        <th class="table-header text-center">Tipo instrumento</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -35,11 +35,12 @@
                                                 <span class="text-secondary text-xs font-weight-bold">@item.Name</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@item.Created.ToShortDateString()</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@item.LastUpDate.ToShortDateString()</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                @*<span class="text-secondary text-xs font-weight-bold">@item.Provider.TradingName.NullTo("-")</span>*@
-                                                <span class="text-secondary text-xs font-weight-bold">-</span>
+                                                <span class="text-secondary text-xs font-weight-bold">
+                                                    @MeasuringToolType.TypeNameDescription(item.MeasuringToolType)
+                                                </span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
@@ -57,7 +58,7 @@
         </div>
     </div>
 }
-<div class="container-fluid ">
+<div class="container-fluid">
     <a class="btn btn-primary" asp-action="Create">Cadastrar</a>
 </div>
 
