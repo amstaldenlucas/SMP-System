@@ -9,7 +9,7 @@
                 <h5 class="ps-2">Conferir Order Produção</h5>
             </div>
             <div class="card-body mr-0 mb-0 pb-2 pt-0">
-                <form method="post" asp-action="OperatorProducing">
+                <form method="get" asp-controller="UserProductionHistory" asp-action="Index">
                     <div class="card-body row m-auto p-0 justify-content-between">
 
                         <div class="form-group row pe-0">
@@ -54,7 +54,11 @@
                     </div>
                     <div class="card-footer py-0 row m-auto p-1">
                         <div class="form-group mb-0 mt-3">
-                            <input type="submit" value="Confirmar e iniciar" class="btn btn-primary" />
+                            @*<input type="submit" value="Confirmar e iniciar" asp-route-id="@Model.ProductionOrderId" class="btn btn-primary" />*@
+                            <a class="btn btn-primary"
+                               asp-route-id="@Model.ProductionOrderId"
+                               asp-controller="UserProductionHistory"
+                               asp-action="Index">Confirmar e iniciar</a>
                         </div>
                     </div>
                 </form>
