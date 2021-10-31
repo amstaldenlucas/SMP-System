@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SMPSystem.Models
 {
@@ -15,7 +16,9 @@ namespace SMPSystem.Models
         public int LostQuantity { get; set; }
         public string Obs { get; set; }
 
-        public int DbUserId { get; set; }
+        public string DbUserId { get; set; }
         public DbUser DbUser { get; set; }
+
+        public List<OrderProductStep> OrderProductSteps { get; set; }
     }
 }

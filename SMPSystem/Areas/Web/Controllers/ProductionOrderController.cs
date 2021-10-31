@@ -23,14 +23,16 @@ namespace SMPSystem.Areas.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var orders = await _dbContext.ProductionOrders.ToArrayAsync();
+            var orders = await _dbContext.ProductionOrders
+                .Include(x => x.DbUser)
+                .ToArrayAsync();
             return View(orders);
         }
 
         public async Task<IActionResult> Create()
         {
             var vm = await _productionOrderHandler.PrepareVm(new ProductionOrderVm());
-            return View(vm);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]

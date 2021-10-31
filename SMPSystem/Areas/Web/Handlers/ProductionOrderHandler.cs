@@ -23,30 +23,9 @@ namespace SMPSystem.Areas.Web.Handlers
 
         public async Task<ProductionOrderVm> PrepareVm(ProductionOrderVm vm)
         {
-            var users = await _dbContext.DbUsers
-                .Where(x => !x.Deleted)
-                .ToArrayAsync();
-
-            var products = await _dbContext.Products
-                .Where(x => !x.Deleted)
-                .ToArrayAsync();
-
-            var userOptions = new List<SelectListItem>() { new SelectListItem("Selecionar Usuário PCP", "0") };
-            foreach (var item in users)
-                userOptions.Add(new SelectListItem(item.UserName, item.Id));
-
-            var productOptions = new List<SelectListItem>() { new SelectListItem("Selecionar Produto", "0") };
-            foreach (var item in products)
-                productOptions.Add(new SelectListItem(item.Name, item.Id.ToString()));
-
+            await DefineUserOptions(vm);
+            await DefineProductOptions(vm);
             return vm;
-        }
-
-        public async Task Create(ProductionOrderVm vm)
-        {
-            var productionOrder = _mapper.Map<ProductionOrder>(vm);
-            var result = await _dbContext.AddAsync(productionOrder);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(int orderId)
@@ -55,6 +34,60 @@ namespace SMPSystem.Areas.Web.Handlers
             order.FinalizedStatus = true;
             order.Obs = "Pedido deletado";
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task Create(ProductionOrderVm vm)
+        {
+            var productionOrder = _mapper.Map<ProductionOrder>(vm);
+            var result = await _dbContext.AddAsync(productionOrder);
+            await _dbContext.SaveChangesAsync();
+
+            var orderId = productionOrder.Id;
+            await CreateOrderProductStep(orderId, vm);
+        }
+
+        // operações da ordem
+        private async Task CreateOrderProductStep(int orderId, ProductionOrderVm vm)
+        {
+            var productProductionSteps = await _dbContext.ProductProductionSteps
+                .Where(x => !x.Deleted)
+                .Where(x => x.ProductId == vm.ProductId)
+                .OrderBy(x => x.ExecutionOrder)
+                .ToArrayAsync();
+
+            List<OrderProductStep> orderProductStepItems = new List<OrderProductStep>();
+            foreach (var item in productProductionSteps)
+                orderProductStepItems.Add(new OrderProductStep(orderId, item.ProductId, item.ExecutionOrder));
+
+            await _dbContext.AddRangeAsync(orderProductStepItems);
+            await _dbContext.SaveChangesAsync();
+        }
+
+
+        private async Task DefineUserOptions(ProductionOrderVm vm)
+        {
+            var users = await _dbContext.DbUsers
+                .Where(x => !x.Deleted)
+                .ToArrayAsync();
+
+            var userOptions = new List<SelectListItem>() { new SelectListItem("Selecionar Usuário PCP", "0") };
+            foreach (var item in users)
+                userOptions.Add(new SelectListItem(item.UserName, item.Id.ToString()));
+
+            vm.DbUserOptions = userOptions;
+        }
+
+        private async Task DefineProductOptions(ProductionOrderVm vm)
+        {
+            var products = await _dbContext.Products
+                .Where(x => !x.Deleted)
+                .ToArrayAsync();
+
+            var productOptions = new List<SelectListItem>() { new SelectListItem("Selecionar Produto", "0") };
+            foreach (var item in products)
+                productOptions.Add(new SelectListItem(item.Name, item.Id.ToString()));
+
+            vm.ProductOptions = productOptions;
         }
     }
 }

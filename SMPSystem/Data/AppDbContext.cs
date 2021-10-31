@@ -27,10 +27,9 @@ namespace SMPSystem.Data
         public DbSet<ProductionOrder> ProductionOrders { get; set; }
         public DbSet<ProductionStep> ProductionSteps { get; set; }
         public DbSet<ProductStepDimension> ProductStepDimensions { get; set; }
-        public DbSet<ProductProductionSteps> ProductProductionSteps { get; set; }
+        public DbSet<ProductProductionStep> ProductProductionSteps { get; set; }
+        public DbSet<OrderProductStep> OrderProductSteps{ get; set; }
 
         public DbSet<UserProductionHistory> UserProductionHistories { get; set; }
-
-
     }
 }

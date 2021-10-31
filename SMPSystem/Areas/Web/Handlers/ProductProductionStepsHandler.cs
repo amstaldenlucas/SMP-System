@@ -47,7 +47,7 @@ namespace SMPSystem.Areas.Web.Handlers
 
         public async Task Create(ProductProductionStepsVm vm)
         {
-            var productProductionStep = _mapper.Map<ProductProductionSteps>(vm);
+            var productProductionStep = _mapper.Map<ProductProductionStep>(vm);
             var result = await _dbContext.AddAsync(productProductionStep);
             await _dbContext.SaveChangesAsync();
         }

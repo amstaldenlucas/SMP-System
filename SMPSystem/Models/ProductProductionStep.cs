@@ -2,7 +2,7 @@
 
 namespace SMPSystem.Models
 {
-    public class ProductProductionSteps
+    public class ProductProductionStep
     {
         public int Id { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;

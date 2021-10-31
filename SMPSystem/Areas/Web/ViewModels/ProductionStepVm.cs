@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SMPSystem.Areas.Web.ViewModels
+﻿namespace SMPSystem.Areas.Web.ViewModels
 {
+    /// <summary>
+    /// <see cref="SMPSystem.Models.ProductionStep" />
+    /// </summary>
     public class ProductionStepVm
     {
         public int Id { get; set; }

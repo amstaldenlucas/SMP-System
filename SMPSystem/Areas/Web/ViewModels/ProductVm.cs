@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SMPSystem.Areas.Web.ViewModels
 {
+    /// <summary>
+    /// <see cref="SMPSystem.Models.Product" />
+    /// </summary>
     public class ProductVm
     {
         public ProductVm()

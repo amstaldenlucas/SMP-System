@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SMPSystem.Areas.Web.ViewModels
 {
+    /// <summary>
+    /// <see cref="SMPSystem.Models.MeasuringTool" />
+    /// </summary>
     public class MeasuringToolVm
     {
         public int Id { get; set; }
