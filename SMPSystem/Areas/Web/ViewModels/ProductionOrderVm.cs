@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SMPSystem.Models
+namespace SMPSystem.Areas.Web.ViewModels
 {
-    public class ProductionOrder
+    public class ProductionOrderVm
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }
@@ -16,6 +21,9 @@ namespace SMPSystem.Models
         public bool Status { get; set; }
 
         public int DbUserId { get; set; }
-        public DbUser DbUser { get; set; }
+        public List<SelectListItem> DbUserOptions { get; set; }
+
+        public int ProductId { get; set; }
+        public List<SelectListItem> ProductOptions { get; set; }
     }
 }

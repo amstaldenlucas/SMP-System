@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SMPSystem.Models
+namespace SMPSystem.Areas.Web.ViewModels
 {
-    public class ProductProductionSteps
+    public class ProductProductionStepsVm
     {
         public int Id { get; set; }
-        public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastUpdate { get; set; } = DateTime.Now;
         public bool Deleted { get; set; }
         public int ExecutionOrder { get; set; }
@@ -13,9 +17,9 @@ namespace SMPSystem.Models
         public int MaximumProductionTimeInSeconds { get; set; }
 
         public int ProductId { get; set; }
-        public Product Product { get; set; }
-
+        public List<SelectListItem> ProductOptions { get; set; }
         public int ProductionStepId { get; set; }
-        public ProductionStep ProductionStep { get; set; }
+
+        public List<SelectListItem> ProductionStepOptions { get; set; }
     }
 }

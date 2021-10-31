@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SMPSystem.Areas.Web.Handlers;
 using SMPSystem.Data;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace SMPSystem.Areas.Web.Controllers
 {
+    [Authorize]
+    [Area("Web")]
     public class ProductionStepController : Controller
     {
         private readonly AppDbContext _dbContext;

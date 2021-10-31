@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMPSystem.Areas.Web.Handlers;
 using SMPSystem.Areas.Web.ViewModels;
 using System.Threading.Tasks;
 
 namespace SMPSystem.Areas.Web.Controllers
 {
+    [Authorize]
+    [Area("Web")]
     public class MeasuringToolController : Controller
     {
         private readonly MeasuringToolHandler _measuringToolHandler;
