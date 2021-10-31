@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SMPSystem.Areas.Web.Handlers;
 using SMPSystem.Data;
 using SMPSystem.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,11 +16,14 @@ namespace SMPSystem.Areas.Web.Controllers
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly GroupHandler _groupHandler;
+        
 
-        public GroupController(AppDbContext dbContext, IMapper mapper)
+        public GroupController(AppDbContext dbContext, IMapper mapper, GroupHandler groupHandler)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _groupHandler = groupHandler;
         }
 
         public async Task<IActionResult> Index()
@@ -40,8 +43,14 @@ namespace SMPSystem.Areas.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductGroup group)
         {
-            var result = await _dbContext.AddAsync(group);
-            await _dbContext.SaveChangesAsync();
+            await _groupHandler.Create(group);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _groupHandler.Delete(id);
             return RedirectToAction(nameof(Index));
         }
     }

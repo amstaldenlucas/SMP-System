@@ -1,12 +1,11 @@
-﻿ using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SMPSystem.Areas.Web.Handlers;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
-using SMPSystem.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,11 +18,13 @@ namespace SMPSystem.Areas.Web.Controllers
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly ProductHandler _productHandler;
 
-        public ProductController(AppDbContext dbContext, IMapper mapper)
+        public ProductController(AppDbContext dbContext, IMapper mapper, ProductHandler productHandler)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _productHandler = productHandler;
         }
 
         public async Task<IActionResult> Index()
@@ -39,49 +40,25 @@ namespace SMPSystem.Areas.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var provides = await _dbContext.Providers
-                .Where(x => !x.Deleted)
-                .ToArrayAsync();
-
-            var groups = await _dbContext.ProductGroups
-                .Where(x => !x.Deleted)
-                .ToArrayAsync();
-
-            var subGroups = await _dbContext.ProductSubGroups
-                .Where(x => !x.Deleted)
-                .ToArrayAsync();
-
-
-            var providerOption = new List<SelectListItem>() { new SelectListItem("Selecionar Fabricante", "0") };
-            foreach (var item in provides)
-                providerOption.Add(new SelectListItem(item.Name, item.Id.ToString()));
-
-            var groupOption = new List<SelectListItem>() { new SelectListItem("Selecionar Grupo", "0") };
-            foreach (var item in groups)
-                groupOption.Add(new SelectListItem(item.Name, item.Id.ToString()));
-
-            var subGroupOption = new List<SelectListItem>() { new SelectListItem("Selecionar Subgrupo", "0") };
-            foreach (var item in subGroups)
-                subGroupOption.Add(new SelectListItem(item.Name, item.Id.ToString()));
-
-            return View(new ProductVm(providerOption, groupOption, subGroupOption));
+            var vm = await _productHandler.PrepareVm(new ProductVm());
+            return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product)
+        public async Task<IActionResult> Create(ProductVm vm)
         {
-            try
+            var prepareResult = _productHandler.PrepareInsert(vm);
+            if (prepareResult.HasErrors)
             {
-                var result = await _dbContext.AddAsync(product);
-                await _dbContext.SaveChangesAsync();
+                foreach (var error in prepareResult.Errors)
+                    ModelState.AddModelError(error.Key, error.Message);
+            }
+            if (!ModelState.IsValid)
+                return View(vm);
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            await _productHandler.Create(vm);
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(int id)
@@ -103,17 +80,13 @@ namespace SMPSystem.Areas.Web.Controllers
             }
         }
 
-        public IActionResult Delete(int id)
-        {
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
+                await _productHandler.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

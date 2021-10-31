@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SMPSystem.Areas.Web.Handlers;
 using SMPSystem.Data;
 using SMPSystem.Models;
 using System.Collections.Generic;
@@ -16,11 +17,13 @@ namespace SMPSystem.Areas.Web.Controllers
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly ProviderHandler _providerHandler;
 
-        public ProviderController(AppDbContext dbContext, IMapper mapper)
+        public ProviderController(AppDbContext dbContext, IMapper mapper, ProviderHandler providerHandler)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _providerHandler = providerHandler;
         }
 
         public async Task<IActionResult> Index()
@@ -40,8 +43,14 @@ namespace SMPSystem.Areas.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Provider provider)
         {
-            var result = await _dbContext.AddAsync(provider);
-            await _dbContext.SaveChangesAsync();
+            await _providerHandler.Create(provider);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _providerHandler.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 

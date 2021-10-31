@@ -41,6 +41,8 @@ namespace SMPSystem
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.ConfigureUserAndIdentity();
+            services.ConfigureHandlerServices();
+
             services.AddTransient<IEmailSender>(x => new BasicMailSender("smtp.gmail.com", "lucas.amstalden07@gmail.com", "rugbybrasil11" +
                 ""));
 
