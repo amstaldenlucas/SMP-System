@@ -5,6 +5,7 @@ namespace SMPSystem.Models
     public class ProductionOrder
     {
         public int Id { get; set; }
+        public int Code { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastUpdate { get; set; }
         public DateTime PrevisionDate { get; set; }
@@ -13,7 +14,6 @@ namespace SMPSystem.Models
         public int ProducedQuantity { get; set; }
         public int LostQuantity { get; set; }
         public string Obs { get; set; }
-        public bool Status { get; set; }
 
         public int DbUserId { get; set; }
         public DbUser DbUser { get; set; }

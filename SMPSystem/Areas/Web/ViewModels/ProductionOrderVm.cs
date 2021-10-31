@@ -10,6 +10,7 @@ namespace SMPSystem.Areas.Web.ViewModels
     public class ProductionOrderVm
     {
         public int Id { get; set; }
+        public int Code { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastUpdate { get; set; }
         public DateTime PrevisionDate { get; set; }

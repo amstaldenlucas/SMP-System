@@ -4,10 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using SMPSystem.Areas.Web.Handlers;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SMPSystem.Areas.Web.Controllers

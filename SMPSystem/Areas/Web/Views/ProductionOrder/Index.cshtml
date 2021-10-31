@@ -1,0 +1,84 @@
+﻿@model ICollection<ProductionOrder>
+@{
+    ViewData["Title"] = "Ordens de Produção";
+}
+
+@if (Model.Any())
+{
+    <div class="container-fluid pt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Ordens de Produção</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table id="example" class="table table-striped items-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="table-header text-center">Código</th>
+                                        <th class="table-header text-center ps-2">Última atualização</th>
+                                        <th class="table-header text-center">Data Previsão</th>
+                                        <th class="table-header text-center">Quantidade Total</th>
+                                        <th class="table-header text-center">Responsável</th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.Code</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.LastUpdate.ToShortDateString()</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.PrevisionDate.ToShortDateString()</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.TotalQuantity.ToString("00")</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">@item.DbUser.UserName</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                    Edit
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="container-fluid">
+    <a class="btn btn-primary" asp-action="Create">Cadastrar</a>
+</div>
+
+
+@section css
+{
+    <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
+    <link type="text/css" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="~/js/overview/datatable.js"></script>
+    <script>
+        $(document).ready(function () {
+            CreteTable('example')
+        });
+    </script>
+}
