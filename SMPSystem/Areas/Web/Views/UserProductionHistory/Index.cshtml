@@ -1,5 +1,157 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿
+@section css{
+    <!-- Include base CSS (optional) -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css" />*@
+    <!-- Include Choices CSS -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />*@
+}
+
+<div class="container-fluid row">
+    <div class="row mt-lg">
+        <div class="col-lg-8 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header py-2 text-center">
+                    <label class="control-label fs-6">Datalhamento Ordem</label>
+                </div>
+                <hr class="m-0"/>
+                <div class="card-body d-flex flex-column pt-2">
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                    <label class="control-label">Teste 1</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                    <label class="control-label">Teste 2</label>
+                </div>
+                <hr class="" />
+                <div class="card-footer d-flex justify-content-between py-1">
+                    <input type="submit" value="Subtrair" class="btn btn-primary" style="background-color: darkred" />
+                    <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: darkgreen" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-0">
+        <div class="col-lg-12 col-md-6 mb-4">
+            <div class="card">
+                <div class="container-fluid d-flex flex-wrap align-items-center px-0">
+                    <div class="col-xl-3 col-sm-6 text-center">
+                        <input type="submit" value="Parada Programada" class="btn btn-primary w-80 m-3" />
+                    </div>
+                    <div class="col-xl-3 col-sm-6 text-center">
+                        <input type="submit" value="Trocar Turno" class="btn btn-primary w-80 m-3" />
+                    </div>
+                    <div class="col-xl-3 col-sm-6 text-center">
+                        <input type="submit" value="Fim de Ordem" class="btn btn-primary w-80 m-3" />
+                    </div>
+                    <div class="col-xl-3 col-sm-6 text-center">
+                        <input type="submit" value="Cotas" class="btn btn-primary w-80 m-3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="col-12 col-lg-8 m-auto">
+            <div class="card mr-0 mb-3">
+                <div class="card-header pt-3 pb-0 ps-4">
+                    <h5 class="ps-2">Cadastrar Produto</h5>
+                </div>
+                <div class="card-body mr-0 mb-0 pb-2 pt-0">
+                    <form method="post">
+                        <div class="card-body row m-auto p-0 justify-content-between">
+
+                            <div class="form-group row pe-0">
+                                <div class="col-xl-6">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <label asp-for="Code" class="control-label"></label>
+                                    <input asp-for="Code" class="form-control" />
+                                    <span asp-validation-for="Code" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-6 pe-0">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row pe-0">
+                                <div class="col-xl-6">
+                                    <label asp-for="Providers" class="control-label"></label>
+                                    <select asp-for="ProviderId" asp-items="@Model.Providers" class="form-select"></select>
+                                </div>
+                                <div class="col-xl-6 pe-0">
+                                    <label asp-for="ProductGroupId" class="control-label"></label>
+                                    <select asp-for="ProductGroupId" asp-items="@Model.Groups" class="form-select"></select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row pe-0">
+                                <div class="col-xl-6">
+                                    <label asp-for="ProductSubGroupId" class="control-label"></label>
+                                    <select asp-for="ProductSubGroupId" asp-items="@Model.SubGroups" class="form-select"></select>
+                                </div>
+                                <div class="form-group col-xl-6 pe-0">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" asp-for="Deleted" /> @Html.DisplayNameFor(model => model.Deleted)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer py-0 row m-auto p-1">
+                            <div class="form-group mb-0 mt-3">
+                                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <!-- Include Choices JavaScript -->
+    @*<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                const choices = new Choices('.js-choice', {
+                    searchEnabled: true,
+                    searchFields: 'label',
+                    shouldSort: false,
+                    itemSelectText: '',
+                    position: 'auto',
+                    searchPlaceholderValue: 'Pesquisar...',
+                });
+            });
+        </script>*@
 }
