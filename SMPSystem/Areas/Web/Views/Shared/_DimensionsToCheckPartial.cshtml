@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProductStepDimension>
+<div class="modal fade" id="dimensionsToCheck" tabindex="-1" role="dialog" aria-labelledby="dimensionsToCheck" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-2">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase" id="staticBackdropLabel">Cotas para monitorar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <h6 class="text-left text-wrap text-break b-radius-5 px-2 bg-gray">
+                            @item.ProductionStep.Description
+                        </h6>
+                        <br />
+                        <div class="row p-0 ms-2">
+                            <div class="col-xl-5 ps-0">
+                                <small>Instrumento:</small>
+                            </div>
+                            <div class="col-xl-6">
+                                <small>@MeasuringToolType.TypeNameDescription(item.MeasuringToolType)</small><br />
+                            </div>
+                        </div>
+                        <div class="row p-0 ms-2">
+                            <div class="col-xl-5 ps-0">
+                                <small>Cota:</small>
+                            </div>
+                            <div class="col-xl-6">
+                                <small>@item.MinimalValue - @item.MaximaumValue</small><br />
+                            </div>
+                        </div>
+                        <div class="row p-0 ms-2">
+                            <div class="col-xl-5 ps-0">
+                                <small>Frequência quantidade:</small>
+                            </div>
+                            <div class="col-xl-6">
+                                <small>@item.FrequencyToMeasureInQuantity</small><br />
+                            </div>
+                        </div>
+                        <div class="row p-0 ms-2">
+                            <div class="col-xl-5 ps-0">
+                                <small>Frequência minutos:</small>
+                            </div>
+                            <div class="col-xl-6">
+                                <small>@item.FrequencyToMeasureInMinutes</small><br />
+                            </div>
+                        </div>
+                        <hr class="my-2" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
 using SMPSystem.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -94,6 +95,7 @@ namespace SMPSystem.Areas.Web.Controllers
             }
 
             userProducingVm.UserProductionHistory = userProducHistory;
+            userProducingVm.DimensionsToCheck = await GetProductStepDimensions(userProducHistory.ProductId, userProducHistory.ProductionStepId);
 
             //vm.MeasuringHistories = 
             // ProductionorderId
@@ -154,6 +156,15 @@ namespace SMPSystem.Areas.Web.Controllers
             vm.DbUserId = userProducingVm.DbUserId;
             vm.ProductionOrderCode = order.Code;
             return vm;
+        }
+
+        private async Task<List<ProductStepDimension>> GetProductStepDimensions(int productId, int productionStepId)
+        {
+            return await _dbContext.ProductStepDimensions
+                .Include(x => x.ProductionStep)
+                .Where(x => x.ProductId == productId)
+                .Where(x => x.ProductionStepId == productionStepId)
+                .ToListAsync();
         }
     }
 }

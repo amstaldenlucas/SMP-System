@@ -129,10 +129,18 @@
                         <input type="submit" value="Fim de Ordem" class="btn btn-primary w-80 m-3" />
                     </div>
                     <div class="col-xl-3 col-sm-6 text-center">
-                        <input type="submit" value="Cotas" class="btn btn-primary w-80 m-3" />
+                        <button type="button"
+                                class="btn btn-primary w-80 m-3"
+                                data-toggle="modal"
+                                data-target="#dimensionsToCheck"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top">
+                            Cotas
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <partial name="_DimensionsToCheckPartial" model="@Model.DimensionsToCheck" />
 </div>
