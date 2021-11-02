@@ -7,10 +7,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content p-2">
             <div class="modal-header row py-0">
-                <h5 class="modal-title text-uppercase" id="staticBackdropLabel">ATENÇÃO. Informar medidas</h5>
+                <h5 class="modal-title text-uppercase w-80" id="staticBackdropLabel">ATENÇÃO. Informar medidas</h5>
                 <br />
                 <small>@stepDescription</small>
-                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">Fechar</button>
+                <button type="button" class="btn btn-close text-danger p-0" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times fa-2x"></i>
+                </button>
             </div>
             <form method="post" asp-controller="RrecordMeasure" asp-action="Record">
                 <div class="modal-body">
