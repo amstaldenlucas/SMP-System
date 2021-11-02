@@ -1,0 +1,74 @@
+﻿@model UserProducingVm
+@{
+    var productionStep = Model.OrderProductStep.ProductProductionStep.ProductionStep;
+    var stepDescription = string.Concat(productionStep.Code, " - ", productionStep.Description);
+}
+<div class="modal fade" id="dimensionsToRecordMeasure" tabindex="-1" role="dialog" aria-labelledby="dimensionsToRecordMeasure" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-2">
+            <div class="modal-header row py-0">
+                <h5 class="modal-title text-uppercase" id="staticBackdropLabel">ATENÇÃO. Informar medidas</h5>
+                <br />
+                <small>@stepDescription</small>
+                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">Fechar</button>
+            </div>
+            <form method="post" asp-controller="RrecordMeasure" asp-action="Record">
+                <div class="modal-body">
+                    <input type="hidden" asp-for="DbUserId" />
+                    <input type="hidden" asp-for="ProductionOrderId" />
+                    <input type="hidden" asp-for="ProductionOrderCode" />
+                    <input type="hidden" asp-for="ProductionStepId"/>
+                    <input type="hidden" asp-for="ProductId" />
+
+                    @for (int i = 0; i < Model.MeasuringHistories.Count; i++)
+                    {
+                        var item = Model.MeasuringHistories[i];
+                        <div class="row">
+                            <h7 class="px-2 font-weight-bold">
+                                @MeasuringDimensionType.TypeNameDescription(item.ProductStepDimension.MeasuringDimensionType)
+                            </h7>
+                            <div class="row p-0 ms-2">
+                                <div class="col-xl-5 ps-0">
+                                    <small>Instrumento:</small>
+                                </div>
+                                <div class="col-xl-6">
+                                    <small>@MeasuringToolType.TypeNameDescription(item.ProductStepDimension.MeasuringToolType)</small><br />
+                                </div>
+                            </div>
+                            <div class="row p-0 ms-2">
+                                <div class="col-xl-5 ps-0">
+                                    <small>Cota:</small>
+                                </div>
+                                <div class="col-xl-6">
+                                    <small>@item.ProductStepDimension.MinimalValue - @item.ProductStepDimension.MaximaumValue</small><br />
+                                </div>
+                            </div>
+                            <div class="row p-0 ms-2">
+                                <div class="col-xl-5 ps-0 align-items-center">
+                                    <small>Medida:</small>
+                                </div>
+                                <div class="col-xl-6 align-items-center">
+                                    <input type="hidden" asp-for="@item.ProducedQuantity" name="MeasuringHistories[@i].ProducedQuantity" />
+                                    <input type="hidden" asp-for="@item.ProductId" name="MeasuringHistories[@i].ProductId" />
+                                    <input type="hidden" asp-for="@item.ProductionOrderId" name="MeasuringHistories[@i].ProductionOrderId" />
+                                    <input type="hidden" asp-for="@item.DbUserId" name="MeasuringHistories[@i].DbUserId" />
+                                    <input type="hidden" asp-for="@item.ProductStepDimensionId" name="MeasuringHistories[@i].ProductStepDimensionId" />
+                                    <input type="hidden" asp-for="@item.ProductionStepId" name="MeasuringHistories[@i].ProductionStepId" />
+                                    <input asp-for="@item.Measuring" name="MeasuringHistories[@i].Measuring" class="form-control">
+                                </div>
+                            </div>
+                            <hr class="my-2" />
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xl ps-0 align-items-end">
+                            <input type="submit" value="Registrar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@ namespace SMPSystem.Data
 
         public DbSet<MeasuringTool> MeasuringTools { get; set; }
         public DbSet<MeasuringToolConference> MeasuringToolConference { get; set; }
-        public DbSet<MeasuringHistory> measuringHistories { get; set; }
+        public DbSet<MeasuringHistory> MeasuringHistories { get; set; }
 
         public DbSet<Provider> Providers { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }

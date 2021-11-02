@@ -9,6 +9,7 @@ namespace SMPSystem.Models
         public DateTime Created { get; set; } = DateTime.Now;
         [Column(TypeName = "decimal(12,4)")]
         public double Measuring { get; set; }
+        public int ProducedQuantity { get; set; }
 
         public int ProductionOrderId { get; set; }
         public int ProductId { get; set; }
@@ -16,5 +17,6 @@ namespace SMPSystem.Models
         public int MeasuringToolId { get; set; }
         public int ProductStepDimensionId { get; set; }
         public int ProductionStepId { get; set; }
+        public ProductStepDimension ProductStepDimension { get; set; }
     }
 }

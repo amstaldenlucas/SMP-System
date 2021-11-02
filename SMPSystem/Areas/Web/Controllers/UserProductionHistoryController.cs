@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using SMPSystem.Areas.Web.ViewModels;
 using SMPSystem.Data;
 using SMPSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -96,6 +97,7 @@ namespace SMPSystem.Areas.Web.Controllers
 
             userProducingVm.UserProductionHistory = userProducHistory;
             userProducingVm.DimensionsToCheck = await GetProductStepDimensions(userProducHistory.ProductId, userProducHistory.ProductionStepId);
+            userProducingVm.MeasuringHistories = await GetMeasuresToRecord(userProducingVm);
 
             //vm.MeasuringHistories = 
             // ProductionorderId
@@ -120,10 +122,10 @@ namespace SMPSystem.Areas.Web.Controllers
 
             if (itemsToChange.UserHistory.ProducedQuantity > 0)
                 itemsToChange.UserHistory.ProducedQuantity--;
-            
+
             if (itemsToChange.OrderProductStep.ProducedQuantity > 0)
                 itemsToChange.OrderProductStep.ProducedQuantity--;
-            
+
             await _dbContext.SaveChangesAsync();
 
             var orderWithUserVm = CreteOrderWithUserVm(vm);
@@ -165,6 +167,63 @@ namespace SMPSystem.Areas.Web.Controllers
                 .Where(x => x.ProductId == productId)
                 .Where(x => x.ProductionStepId == productionStepId)
                 .ToListAsync();
+        }
+
+        private async Task<List<MeasuringHistory>> GetMeasuresToRecord(UserProducingVm vm)
+        {
+            var measuresToRecord = new List<MeasuringHistory>();
+            foreach (var item in vm.DimensionsToCheck)
+            {
+                var newMeasuring = await MeasuringHistory(vm, item);
+                if (newMeasuring != null)
+                    measuresToRecord.Add(newMeasuring);
+            }
+            return measuresToRecord;
+        }
+
+
+        // Pegar as cotas que serão medidas na próxima adição
+        private async Task<MeasuringHistory> MeasuringHistory(UserProducingVm vm, ProductStepDimension dimension)
+        {
+            var recordByQuantity = false;
+            var recordByTime = false;
+
+            //var productStepDimension = vm.DimensionsToCheck
+            //    .Where(x => x.Id == measuring.ProductStepDimensionId)
+            //    .FirstOrDefault();
+
+            var lastHistory = await _dbContext.MeasuringHistories
+                .Where(x => x.ProductId == vm.ProductId)
+                .Where(x => x.DbUserId == vm.DbUserId)
+                .Where(x => x.ProductionStepId == vm.ProductionStepId)
+                .OrderByDescending(x => x.Created)
+                .FirstOrDefaultAsync();
+
+            var productStep = await _dbContext.ProductProductionSteps
+                .Where(x => x.ProductId == vm.ProductId)
+                .Where(x => x.ProductionStepId == vm.ProductionStepId)
+                .FirstOrDefaultAsync();
+
+            var nextQuantity = vm.OrderProductStep.ProducedQuantity + 1;
+            recordByQuantity = lastHistory?.ProducedQuantity + dimension.FrequencyToMeasureInQuantity == nextQuantity;
+
+            var nextTime = lastHistory?.Created.AddMinutes(dimension.FrequencyToMeasureInMinutes);
+            var AverageTimeToProduce = (productStep.ProductionTimeInSeconds + productStep.MaximumProductionTimeInSeconds) / 2;
+            recordByTime = DateTime.Now.AddSeconds(AverageTimeToProduce) >= nextTime;
+
+            if (recordByQuantity || recordByTime)
+                return new MeasuringHistory()
+                {
+                    ProducedQuantity = nextQuantity,
+                    ProductId = vm.ProductId,
+                    ProductionOrderId = vm.Order.Id,
+                    DbUserId = vm.DbUserId,
+                    ProductStepDimensionId = dimension.Id,
+                    ProductionStepId = dimension.ProductId,
+                    ProductStepDimension = dimension,
+                };
+
+            return null;
         }
     }
 }

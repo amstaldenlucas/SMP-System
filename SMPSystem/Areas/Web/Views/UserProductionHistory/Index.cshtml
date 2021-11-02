@@ -109,7 +109,21 @@
                         <input type="hidden" asp-for="ProductionOrderId" />
                         <input type="hidden" asp-for="ProductionOrderCode" />
                         <input type="hidden" asp-for="ProductionStepId" />
-                        <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: darkgreen" />
+                        @if (Model.MeasuringHistories.Any())
+                        {
+                            <button type="button"
+                                    class="btn btn-primary w-80 m-3"
+                                    data-toggle="modal"
+                                    data-target="#dimensionsToRecordMeasure"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top">
+                                Adicionar com med.
+                            </button>
+                        }
+                        else
+                        {
+                            <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: darkgreen" />
+                        }
                     </form>
                 </div>
             </div>
@@ -143,4 +157,5 @@
         </div>
     </div>
     <partial name="_DimensionsToCheckPartial" model="@Model.DimensionsToCheck" />
+    <partial name="_DimensionsToRecordMeasurePartial" model="@Model" />
 </div>
