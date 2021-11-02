@@ -19,7 +19,7 @@ namespace SMPSystem.Models
             ProductProductionStepId = productProductionStepId;
         }
 
-        // operaçõe da ordem.. Assim que cria o pedido já deve popular os registros.
+        // operaçõeS da ordem.. Assim que cria o pedido já deve popular os registros.
         public int Id { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime StartDateTime { get; set; }

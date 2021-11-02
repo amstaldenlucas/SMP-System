@@ -80,6 +80,7 @@ namespace SMPSystem.Areas.Web.Controllers
             // OrderProductStep.ProductProductionStep.ProductionStep.Code
             // OrderProductStep.ProductProductionStep.Product.Name
             vm.DbUser = user;
+            vm.DbUserId = user.Id;
             vm.ProductionOrder = orderProduction;
             vm.OrderProductStep = orderProductionItem;
             //vm.ProductionOrder.OrderProductSteps.Add(orderProductionItem);
