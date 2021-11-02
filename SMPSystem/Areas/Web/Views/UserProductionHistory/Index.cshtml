@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Pedido " + Model.Order.Code;
     string stepName = Model.OrderProductStep.ProductProductionStep.ProductionStep.Code + " - " +
-                                    Model.OrderProductStep.ProductProductionStep.ProductionStep.Name;
+                                    Model.OrderProductStep.ProductProductionStep.ProductionStep.Description;
 
     int mediumTimeDisplay = (Model.OrderProductStep.ProductProductionStep.ProductionTimeInSeconds +
                                     Model.OrderProductStep.ProductProductionStep.MaximumProductionTimeInSeconds) / 2;

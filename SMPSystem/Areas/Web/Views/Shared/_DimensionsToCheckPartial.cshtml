@@ -2,18 +2,19 @@
 <div class="modal fade" id="dimensionsToCheck" tabindex="-1" role="dialog" aria-labelledby="dimensionsToCheck" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content p-2">
-            <div class="modal-header">
+            <div class="modal-header row py-0">
                 <h5 class="modal-title text-uppercase" id="staticBackdropLabel">Cotas para monitorar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <br/>
+                <small>@string.Concat(Model.First().ProductionStep.Code, " - ", Model.First().ProductionStep.Description)</small>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Fechar</button>
             </div>
             <div class="modal-body">
                 @foreach (var item in Model)
                 {
                     <div class="row">
-                        <h6 class="text-left text-wrap text-break b-radius-5 px-2 bg-gray">
-                            @item.ProductionStep.Description
-                        </h6>
-                        <br />
+                        <h7 class="px-2 font-weight-bold">
+                            @MeasuringDimensionType.TypeNameDescription(item.MeasuringDimensionType)
+                        </h7>
                         <div class="row p-0 ms-2">
                             <div class="col-xl-5 ps-0">
                                 <small>Instrumento:</small>
