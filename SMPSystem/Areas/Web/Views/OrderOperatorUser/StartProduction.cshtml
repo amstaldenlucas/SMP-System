@@ -16,7 +16,7 @@
                             <div class="col-xl-6">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                                <label asp-for="DbUserId" class="control-label"></label>
+                                <label asp-for="DbUserOptions" class="control-label"></label>
                                 <select asp-for="DbUserId" asp-items="@Model.DbUserOptions" class="form-select"></select>
                                 <span asp-validation-for="DbUserId" class="text-danger"></span>
                             </div>

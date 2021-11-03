@@ -11,14 +11,19 @@ namespace SMPSystem.Areas.Web.ViewModels
     public class SubgroupVm
     {
         public int Id { get; set; }
+        [Display(Name = "Código")]
         public string Code { get; set; }
+        [Display(Name = "Nome")]
         public string Name { get; set; }
+        [Display(Name = "Criação")]
         public DateTime Created { get; set; } = DateTime.Now;
+        [Display(Name = "Última atualização")]
         public DateTime LastUpdate { get; set; } = DateTime.Now;
+        [Display(Name = "Inativo")]
         public bool Deleted { get; set; }
 
-        [Display(Name = "Grupo")]
         public int ProductGroupId { get; set; }
+        [Display(Name = "Grupos")]
         public List<SelectListItem> Groups { get; set; } = new List<SelectListItem>();
     }
 }

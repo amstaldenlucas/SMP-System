@@ -40,11 +40,11 @@ namespace SMPSystem.Areas.Web.ViewModels
         [Display(Name = "Fornecedores")]
         public List<SelectListItem> Providers { get; set; } = new List<SelectListItem>();
 
-        [Display(Name = "Grupo")]
         public string ProductGroupId { get; set; }
+        [Display(Name = "Grupos")]
         public List<SelectListItem> Groups { get; set; } = new List<SelectListItem>();
 
-        [Display(Name = "Subgrupo")]
+        [Display(Name = "Subgrupos")]
         public string ProductSubGroupId { get; set; }
         public List<SelectListItem> SubGroups { get; set; } = new List<SelectListItem>();
     }
