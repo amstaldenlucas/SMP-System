@@ -71,7 +71,7 @@ namespace SMPSystem.Areas.Web.Controllers
             orderProductionItem.ProductProductionStep = productProductionStep;
 
             if (orderProductionItem.InitialQuantity == 0)
-                orderProductionItem.InitialQuantity = orderProduction.TotalQuantity;
+                orderProductionItem.InitialQuantity = orderProduction.TotalQuantity - orderProduction.LostQuantity;
 
             var user = await _dbContext.Users
                 .FirstOrDefaultAsync(x => x.Id == vm.DbUserId);

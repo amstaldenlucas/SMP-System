@@ -205,7 +205,7 @@ namespace SMPSystem.Areas.Web.Controllers
                 .FirstOrDefaultAsync();
 
             var nextQuantity = vm.OrderProductStep.ProducedQuantity + 1;
-            recordByQuantity = lastHistory?.ProducedQuantity + dimension.FrequencyToMeasureInQuantity == nextQuantity;
+            recordByQuantity = (lastHistory?.ProducedQuantity + dimension.FrequencyToMeasureInQuantity <= nextQuantity) || lastHistory == null;
 
             var nextTime = lastHistory?.Created.AddMinutes(dimension.FrequencyToMeasureInMinutes);
             var AverageTimeToProduce = (productStep.ProductionTimeInSeconds + productStep.MaximumProductionTimeInSeconds) / 2;
@@ -224,6 +224,22 @@ namespace SMPSystem.Areas.Web.Controllers
                 };
 
             return null;
+        }
+
+        public async Task<IActionResult> FinalizeUserProductionHistory(UserProducingVm vm)
+        {
+            var userProducHistory = await _dbContext.UserProductionHistories
+                .Where(x => x.DbUserId == vm.DbUserId)
+                .Where(x => x.ProductionOrderId == vm.ProductionOrderId)
+                .Where(x => x.ProductionStepId == vm.ProductionStepId)
+                .Where(x => x.Status)
+                .FirstOrDefaultAsync();
+
+            userProducHistory.Status = false;
+            await _dbContext.SaveChangesAsync();
+            return View();
+
+            // ainda falta informar as cotas da última peça e rotina para finalizar a ordem
         }
     }
 }
