@@ -1,0 +1,8 @@
+﻿.img-resize {
+    width: 44px; /* you can use % */
+    height: auto !important;
+}
+
+.max-h {
+    max-height: 100px !important;
+}

@@ -1,10 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
-
+@section css
+{
+    <style>
+        .img-resize-300 {
+            height: auto !important;
+            width: 300px;
+        }
+    </style>
+}
 <div class="text-center">
-    <h1 class="display-4">Bem vindo!</h1>
-    <p class="text-primary">SMP: sistema empresarial para controle e apontamento de produção.</p>
-    <p class="text-primary">FATEC: Faculdade de tecnologia de Indaiatuba Dr. Archimendes Lamoglia</p>
-    <p class="text-primary">Desenvolvido por: Lucas Amstalden Souza</p>
+    <div class="row">
+        <h1 class="display-4 text-primary">Bem vindo!</h1>
+        <p class="text-primary">SMP: sistema empresarial para controle e apontamento de produção.</p>
+        <p class="text-primary">FATEC: Faculdade de tecnologia de Indaiatuba Dr. Archimendes Lamoglia</p>
+        <p class="text-primary">Desenvolvido por: Lucas Amstalden Souza</p>
+    </div>
+    <div class="row justify-content-center">
+        <img class="img-resize-300" src="~/img/logoSMP/Logo_SMP_Hori.png" />
+    </div>
 </div>
+

@@ -17,15 +17,17 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="~/css/soft-ui-dashboard.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/overview/datatableUtil.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
 
     @RenderSection("Css", required: false)
 </head>
-<body class="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show bg-gray-200">
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-white" id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a href="#">
-                <img src="~/img/Blue_S_Monogram_Tech_Logo.png" class="navbar-brand-img h-100" height="50" alt="main_logo">
+            <a class="navbar-brand m-0 py-2 h-100" href="~/Web">
+                <img src="~/img/logoSMP/Logo_SMP_recort_VERT.png" class="navbar-brand-img h-100 img-resize max-h" alt="SMP" sizes="100x125">
+                <span class="ms-1 font-weight-bold text-primary">SMP System</span>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
