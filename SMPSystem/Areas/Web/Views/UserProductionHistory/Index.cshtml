@@ -147,12 +147,16 @@
                            asp-route-id="@Model.UserProductionHistory.Id">Registrar peça perdida</a>
                     </div>
                     <div class="col-xl-3 col-sm-6 text-center">
-                        <input type="submit" value="Fim de Op" class="btn btn-primary w-80 m-3" />
+                        <a class="btn btn-primary w-80 m-3"
+                           onclick="BoxConfirm('Confirma finalizar ordem?',
+                                    'UserProductionHistory/EndOrder/@Model.UserProductionHistory.Id', event)"
+                           >Fim de Op</a>
                     </div>
                     <div class="col-xl-3 col-sm-6 text-center">
                         <a class="btn btn-primary w-80 m-3"
-                           asp-action="EndProduction"
-                           asp-route-id="@Model.UserProductionHistory.Id">Trocar Turno</a>
+                           onclick="BoxConfirm('Confirma trocar turno?',
+                                    'UserProductionHistory/EndProduction/@Model.UserProductionHistory.Id', event)"
+                           >Trocar Turno</a>
                     </div>
                     <div class="col-xl-3 col-sm-6 text-center">
                         <button type="button"

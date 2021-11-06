@@ -6,15 +6,15 @@
 <div class="modal fade" id="dimensionsToRecordMeasure" tabindex="-1" role="dialog" aria-labelledby="dimensionsToRecordMeasure" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content p-2">
-            <div class="modal-header row py-0">
+            <div class="modal-header row py-0 border-bottom-0">
                 <h5 class="modal-title text-uppercase w-80" id="staticBackdropLabel">ATENÇÃO. Informar medidas</h5>
-                <br />
-                <small>@stepDescription</small>
-                <button type="button" class="btn btn-close text-danger p-0" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn btn-close text-danger p-0 ms-1 me-2" data-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times fa-2x"></i>
                 </button>
+                <small>@stepDescription</small>
             </div>
-            <form method="post" asp-controller="RrecordMeasure" asp-action="Record">
+            <hr class="my-2" />
+            <form method="post" asp-controller="RrecordMeasure" asp-action="Record" class="">
                 <div class="modal-body">
                     <input type="hidden" asp-for="DbUserId" />
                     <input type="hidden" asp-for="ProductionOrderId" />

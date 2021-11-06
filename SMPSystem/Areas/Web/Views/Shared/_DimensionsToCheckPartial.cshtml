@@ -2,14 +2,15 @@
 <div class="modal fade" id="dimensionsToCheck" tabindex="-1" role="dialog" aria-labelledby="dimensionsToCheck" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content p-2">
-            <div class="modal-header row py-0">
+            <div class="modal-header row py-0 border-bottom-0">
                 <h5 class="modal-title text-uppercase w-80" id="staticBackdropLabel">Cotas para monitorar</h5>
                 <button type="button" class="btn btn-close text-danger p-0" data-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times fa-2x"></i>
                 </button>
-                <br/>
+                <br />
                 <small>@string.Concat(Model.First().ProductionStep.Code, " - ", Model.First().ProductionStep.Description)</small>
             </div>
+            <hr class="my-2" />
             <div class="modal-body">
                 @foreach (var item in Model)
                 {
