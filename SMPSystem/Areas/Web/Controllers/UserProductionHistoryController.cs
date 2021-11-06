@@ -241,5 +241,51 @@ namespace SMPSystem.Areas.Web.Controllers
 
             // ainda falta informar as cotas da última peça e rotina para finalizar a ordem
         }
+
+        public async Task<IActionResult> EndProduction(int id)
+        {
+            var userprodHistory = await _dbContext.UserProductionHistories.FindAsync(id);
+            userprodHistory.EndDate = DateTime.Now;
+            userprodHistory.Status = false;
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> EndOrder(int id)
+        {
+            var userprodHistory = await _dbContext.UserProductionHistories.FindAsync(id);
+            userprodHistory.EndDate = DateTime.Now;
+            userprodHistory.Status = false;
+
+            var orderProdStep = await _dbContext.OrderProductSteps
+                .Where(x => !x.FinalizedStatus)
+                .Where(x => x.OrderId == userprodHistory.ProductionOrderId)
+                .Where(x => x.ProductId == userprodHistory.ProductId)
+                .FirstOrDefaultAsync();
+
+            orderProdStep.FinalizedStatus = true;
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> RegisterLost(int id)
+        {
+            var userprodHistory = await _dbContext.UserProductionHistories.FindAsync(id);
+            var orderProdStep = await _dbContext.OrderProductSteps
+                .Where(x => !x.FinalizedStatus)
+                .Where(x => x.OrderId == userprodHistory.ProductionOrderId)
+                .Where(x => x.ProductId == userprodHistory.ProductId)
+                .FirstOrDefaultAsync();
+
+            var order = await _dbContext.ProductionOrders.FindAsync(orderProdStep.OrderId);
+
+            order.LostQuantity++;
+            orderProdStep.LostQuantity++;
+            await _dbContext.SaveChangesAsync();
+
+            var vm = new OrderWithDbUserVm();
+            vm.ProductionOrderCode = order.Code;
+            return RedirectToAction(nameof(Index), vm);
+        }
     }
 }

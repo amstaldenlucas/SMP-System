@@ -1,28 +1,69 @@
-﻿@model IEnumerable<MeasuringHistory>
+﻿@model ProductDashboardVm
 @{
-    ViewData["Title"] = "Dsahboar Medidas";
-    var mediaMesure = Model.Select(x => x.Measuring).Sum() / Model.Count();
+    ViewData["Title"] = "Dsahboard Medidas";
+    double mediaMesure = 0;
+    if (Model.MeasuringHistories.Any())
+        mediaMesure = Model.MeasuringHistories.Select(x => x.Measuring).Sum() / Model.MeasuringHistories.Count();
 }
 <div class="container-fluid pt-4">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card z-index-2">
-                <div class="card-header pb-0">
-                    <h6>Oscilação Medidas</h6>
-                    <p class="text-sm">
-                        @*<i class="fa fa-arrow-up text-success"></i>*@
-                        @*<span class="font-weight-bold">4% more</span> in 2021*@
-                        <span class="font-weight-bold">Produto X</span>
-                    </p>
+    <div class="card mr-0 mb-3">
+        <div class="card-header pt-3 pb-0 ps-4">
+            <h5 class="ps-2">Carregar Dashboard</h5>
+        </div>
+        <div class="card-body mr-0 mb-3 pt-0">
+            <form method="post">
+                <div class="card-body row m-auto p-0 justify-content-between">
+                    <div class="form-group row pe-0">
+                        <div class="col-xl-6">
+                            <label asp-for="@Model.ProductOptions" class="control-label"></label>
+                            <select asp-for="ProductId" asp-items="@Model.ProductOptions" class="form-select w-80"></select>
+                        </div>
+                        <div class="col-xl-6 pe-0">
+                            <label asp-for="@Model.ProductionStepOptions" class="control-label"></label>
+                            <select asp-for="ProductionStepId" asp-items="@Model.ProductionStepOptions" class="form-select w-80"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row pe-0">
+                        <div class="col-xl-6">
+                            <label asp-for="OrderCode" class="control-label"></label>
+                            <input class="form-control w-80" type="text" asp-for="OrderCode" />
+                        </div>
+                        @if (Model.ProductionStepId > 0)
+                        {
+                            <div class="col-xl-6">
+                                <label asp-for="ProductStepDimensions" class="control-label"></label>
+                                <select asp-for="ProductStepDimensionId" asp-items="@Model.ProductStepDimensions" class="form-select w-80"></select>
+                            </div>
+                        }
+                        <div class="col-xl-6 pe-0 align-self-end">
+                            <input type="submit" value="Buscar" class="btn btn-primary mb-0 mt-3" />
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+            </form>
+        </div>
+    </div>
+
+    @if (Model.MeasuringHistories.Any())
+    {
+        <div class="row mb-3">
+            <div class="col-lg-12">
+                <div class="card z-index-2">
+                    <div class="card-header pb-0">
+                        <h6>Oscilação Medidas</h6>
+                        <p class="text-sm">
+                            <span class="font-weight-bold">@Model.ProductName</span>
+                        </p>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 </div>
 @section scripts
 {
@@ -32,7 +73,9 @@
     <script src="~/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="~/js/plugins/chartjs.min.js"></script>
 
-    <script>
+    @if (Model.MeasuringHistories.Any())
+    {
+        <script>
         var ctx2 = document.getElementById("chart-line").getContext("2d");
 
         var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
@@ -47,18 +90,18 @@
         gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
         gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
 
-        @if (Model.Any())
+        @if (Model.MeasuringHistories.Any())
         {
         <text>
             new Chart(ctx2, {
                 type: "line",
                 data: {
-                    labels: [@foreach (var item in Model)
-	                        {
+                    labels: [@foreach (var item in Model.MeasuringHistories)
+                    {
                                 <text>'</text>
                                 @item.Created.ToString("HH:mm")
                                 <text>',</text>
-	                        }],
+                    }],
                     datasets: [{
                         label: "Média da cota",
                         tension: 0.4,
@@ -68,11 +111,11 @@
                         borderWidth: 3,
                         backgroundColor: gradientStroke1,
                         fill: true,
-                        data: [@foreach (var item in Model)
-                                {
+                        data: [@foreach (var item in Model.MeasuringHistories)
+                        {
                                     @mediaMesure.ToString(CultureInfo.CreateSpecificCulture("en-US"))
                             <text>,</text>
-                                }],
+                        }],
                         maxBarThickness: 6
 
                     },
@@ -85,7 +128,7 @@
                         borderWidth: 3,
                         backgroundColor: gradientStroke2,
                         fill: true,
-                        data: [@foreach (var item in Model)
+                        data: [@foreach (var item in Model.MeasuringHistories)
                         {
                             @item.Measuring.ToString(CultureInfo.CreateSpecificCulture("en-US"))
                             <text>,</text>
@@ -152,6 +195,6 @@
             });
         </text>
         }
-    </script>
-
+        </script>
+    }
 }

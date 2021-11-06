@@ -21,7 +21,7 @@ namespace SMPSystem.Services
             services.AddScoped<ProductStepDimensionHandler>();
             services.AddScoped<ProviderHandler>();
             services.AddScoped<SubgroupHandler>();
-
+            services.AddScoped<MeasuringHistoryDashboardHandler>();
             return services;
         }
 
