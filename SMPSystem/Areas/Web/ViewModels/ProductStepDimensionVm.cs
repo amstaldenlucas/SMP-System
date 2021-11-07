@@ -36,10 +36,12 @@ namespace SMPSystem.Areas.Web.ViewModels
         [Display(Name = "Observação")]
         public string Obs { get; set; }
 
+        [Display(Name = "Produto")]
         public int ProductId { get; set; }
         [Display(Name = "Produto")]
         public List<SelectListItem> ProductOptions { get; set; }
 
+        [Display(Name = "Operação")]
         public int ProductionStepId { get; set; }
         [Display(Name = "Operação")]
         public List<SelectListItem> ProductionStepOptions { get; set; }

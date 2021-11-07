@@ -22,11 +22,14 @@ namespace SMPSystem.Areas.Web.ViewModels
         [Display(Name = "Tempo máximo de produção")]
         public int MaximumProductionTimeInSeconds { get; set; }
 
+        [Display(Name = "Produto")]
         public int ProductId { get; set; }
-        [Display(Name = "Opções de Produto")]
+        [Display(Name = "Produto")]
         public List<SelectListItem> ProductOptions { get; set; } = new List<SelectListItem>();
+
+        [Display(Name = "Operação")]
         public int ProductionStepId { get; set; }
-        [Display(Name = "Opções de Operação")]
+        [Display(Name = "Operação")]
         public List<SelectListItem> ProductionStepOptions { get; set; } = new List<SelectListItem>();
     }
 }

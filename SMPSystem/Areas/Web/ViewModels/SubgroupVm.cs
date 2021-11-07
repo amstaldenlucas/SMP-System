@@ -22,8 +22,9 @@ namespace SMPSystem.Areas.Web.ViewModels
         [Display(Name = "Inativo")]
         public bool Deleted { get; set; }
 
+        [Display(Name = "Grupo")]
         public int ProductGroupId { get; set; }
-        [Display(Name = "Grupos")]
+        [Display(Name = "Grupo")]
         public List<SelectListItem> Groups { get; set; } = new List<SelectListItem>();
     }
 }

@@ -7,8 +7,8 @@ namespace SMPSystem.Models
     {
         public int Id { get; set; }
         public int Code { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime LastUpdate { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime LastUpdate { get; set; } = DateTime.Now;
         public DateTime PrevisionDate { get; set; }
         public bool FinalizedStatus { get; set; }
         public int TotalQuantity { get; set; }

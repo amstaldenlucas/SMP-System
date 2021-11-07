@@ -32,12 +32,14 @@ namespace SMPSystem.Areas.Web.ViewModels
         public string Obs { get; set; }
         public bool Status { get; set; }
 
+        [Display(Name = "Usuário")]
         public string DbUserId { get; set; }
-        [Display(Name = "Opções de usuário")]
+        [Display(Name = "Usuário")]
         public List<SelectListItem> DbUserOptions { get; set; }
 
+        [Display(Name = "Produto")]
         public int ProductId { get; set; }
-        [Display(Name = "Opções de produto")]
+        [Display(Name = "Produto")]
         public List<SelectListItem> ProductOptions { get; set; }
     }
 }
