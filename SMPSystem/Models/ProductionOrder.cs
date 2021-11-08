@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMPSystem.Models
 {
     public class ProductionOrder
     {
         public int Id { get; set; }
+        [Display(Name = "Código")]
         public int Code { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastUpdate { get; set; } = DateTime.Now;

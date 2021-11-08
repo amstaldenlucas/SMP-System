@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMPSystem.Models
 {
@@ -6,6 +7,7 @@ namespace SMPSystem.Models
     {
         public int Id { get; set; }
         public string Code { get; set; }
+        [Display(Name = "Nome")]
         public string Name { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastUpdate { get; set; } = DateTime.Now;

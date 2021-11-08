@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMPSystem.Models
 {
@@ -15,6 +16,7 @@ namespace SMPSystem.Models
         
         // true para ordem rodando
         public bool Status { get; set; }
+        [Display (Name = "Quantidade Produzida")]
         public int ProducedQuantity { get; set; }
 
     }

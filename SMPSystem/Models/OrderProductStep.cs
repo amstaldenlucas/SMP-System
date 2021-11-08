@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace SMPSystem.Models
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
 
+        [Display(Name = "Quantidade inicial")]
         public int InitialQuantity { get; set; }
         public int ProducedQuantity { get; set; }
         public int LostQuantity { get; set; }
