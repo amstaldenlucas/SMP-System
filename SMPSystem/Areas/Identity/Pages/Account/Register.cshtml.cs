@@ -61,6 +61,12 @@ namespace SMPSystem.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "RA")]
+            public string Ra { get; set; }
+
+            [Display(Name = "CPF")]
+            public string Document { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -75,7 +81,7 @@ namespace SMPSystem.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new DbUser { UserName = Input.Email, Email = Input.Email };
+                var user = new DbUser { UserName = Input.Email, Email = Input.Email, Ra = Input.Ra, Document = Input.Document };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
