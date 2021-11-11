@@ -13,10 +13,13 @@ namespace SMPSystem.Models
         public DateTime LastUpdate { get; set; } = DateTime.Now;
         public bool Deleted { get; set; }
 
-        public int ProviderId { get; set; }
-
-        public int ProductGroupId { get; set; }
-
-        public int ProductSubGroupId { get; set; }
+        public int? ProviderId { get; set; }
+        public Provider Provider { get; set; }
+        
+        public int? ProductGroupId { get; set; }
+        public ProductGroup ProductGroup { get; set; }
+        
+        public int? ProductSubGroupId { get; set; }
+        public ProductSubGroup ProductSubGroup { get; set; }
     }
 }

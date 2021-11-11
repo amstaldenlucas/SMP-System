@@ -33,7 +33,7 @@ namespace SMPSystem.Data.AutoMapper
                 .ReverseMap();
         }
 
-        private Provider GetProviderById(int providerId)
+        private Provider GetProviderById(int? providerId = 0)
             => _dbContext.Providers.Find(providerId);
     }
 }
