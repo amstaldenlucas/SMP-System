@@ -196,6 +196,7 @@ namespace SMPSystem.Areas.Web.Controllers
                 .Where(x => x.ProductId == vm.ProductId)
                 .Where(x => x.DbUserId == vm.DbUserId)
                 .Where(x => x.ProductionStepId == vm.ProductionStepId)
+                .Where(x => x.ProductStepDimensionId == dimension.Id)
                 .OrderByDescending(x => x.Created)
                 .FirstOrDefaultAsync();
 
